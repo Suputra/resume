@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Saahas Yechuri - Terminal Resume</title>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+            :root {
+                --bg: #1a1b26;
+                --bg-lighter: #24283b;
+                --text: #c0caf5;
+                --pink: #f7768e;
+                --purple: #bb9af7;
+                --cyan: #7dcfff;
+                --green: #9ece6a;
+                --yellow: #e0af68;
+                --border: #414868;
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: "JetBrains Mono", monospace;
+            }
+
+            body {
+                background: var(--bg);
+                color: var(--text);
+                padding: 2rem;
+                line-height: 1.6;
+                min-height: 100vh;
+            }
+
+            .terminal {
+                max-width: 1200px;
+                margin: 0 auto;
+                background: var(--bg-lighter);
+                padding: 2rem;
+                border-radius: 12px;
+                box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
+                border: 1px solid var(--border);
+            }
+
+            .titlebar {
+                display: flex;
+                align-items: center;
+                margin-bottom: 2rem;
+                padding-bottom: 0.5rem;
+                border-bottom: 1px solid var(--border);
+                position: sticky;
+                top: 0;
+                background: var(--bg-lighter);
+                z-index: 100;
+            }
+
+            .circle {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                margin-right: 8px;
+                transition: opacity 0.2s;
+            }
+
+            .circle:hover {
+                opacity: 0.8;
+            }
+
+            .circle:nth-child(1) {
+                background: var(--pink);
+            }
+            .circle:nth-child(2) {
+                background: var(--yellow);
+            }
+            .circle:nth-child(3) {
+                background: var(--green);
+            }
+
+            .prompt {
+                color: var(--purple);
+                margin-bottom: 1.5rem;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .prompt span {
+                color: var(--text);
+            }
+
+            .content {
+                display: grid;
+                grid-template-columns: minmax(300px, 1.2fr) 2fr;
+                gap: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .ascii-art {
+                font-size: 8px;
+                line-height: 0.6;
+                letter-spacing: 0;
+                white-space: pre;
+                color: var(--text);
+                opacity: 0.7;
+                transition: opacity 0.2s;
+            }
+
+            .ascii-art:hover {
+                opacity: 1;
+            }
+
+            .info {
+                display: grid;
+                gap: 1rem;
+            }
+
+            .info-line {
+                display: grid;
+                grid-template-columns: 140px 1fr;
+                gap: 1rem;
+                align-items: baseline;
+            }
+
+            .info-label {
+                color: var(--pink);
+                font-weight: 500;
+            }
+
+            .info-value {
+                color: var(--text);
+                line-height: 1.6;
+            }
+
+            .command-block {
+                margin-top: 2rem;
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                padding: 1.5rem;
+                background: rgba(0, 0, 0, 0.2);
+                transition: transform 0.2s, box-shadow 0.2s;
+            }
+
+            .command-block:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            }
+
+            .command {
+                color: var(--green);
+                margin-bottom: 1.5rem;
+                font-weight: 600;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .command::before {
+                content: "$";
+                color: var(--purple);
+            }
+
+            .output {
+                color: var(--text);
+                padding-left: 1rem;
+            }
+
+            .output p {
+                margin-bottom: 1rem;
+            }
+
+            .output ul {
+                list-style: none;
+                margin-left: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .output li {
+                margin-bottom: 0.8rem;
+                position: relative;
+                padding-left: 1.2rem;
+                line-height: 1.6;
+            }
+
+            .output li::before {
+                content: ">";
+                position: absolute;
+                left: 0;
+                color: var(--purple);
+            }
+
+            .tag-section {
+                margin-bottom: 2rem;
+            }
+
+            .tag-title {
+                color: var(--yellow);
+                margin-bottom: 1rem;
+                font-weight: 600;
+            }
+
+            .tag {
+                background: rgba(0, 0, 0, 0.3);
+                color: var(--cyan);
+                padding: 0.3rem 0.8rem;
+                border-radius: 4px;
+                display: inline-block;
+                margin: 0.3rem;
+                font-size: 0.9rem;
+                border: 1px solid var(--border);
+                transition: all 0.2s;
+            }
+
+            .tag:hover {
+                background: var(--bg);
+                transform: translateY(-1px);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            .link {
+                color: var(--cyan);
+                text-decoration: none;
+                border-bottom: 1px solid transparent;
+                transition: all 0.2s;
+            }
+
+            .link:hover {
+                border-bottom-color: var(--cyan);
+            }
+
+            .section-heading {
+                color: var(--yellow);
+                margin-top: 1.5rem;
+                margin-bottom: 1rem;
+                font-weight: 600;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .section-heading::before {
+                content: "#";
+                color: var(--purple);
+                opacity: 0.7;
+            }
+
+            .company {
+                color: var(--pink);
+                font-weight: 600;
+            }
+
+            .period {
+                color: var(--cyan);
+                margin-bottom: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .cursor {
+                display: inline-block;
+                width: 8px;
+                height: 16px;
+                background: var(--text);
+                animation: blink 1s infinite;
+                vertical-align: middle;
+            }
+
+            @keyframes blink {
+                0%, 100% { opacity: 0; }
+                50% { opacity: 1; }
+            }
+
+            @media (max-width: 768px) {
+                .content {
+                    grid-template-columns: 1fr;
+                }
+
+                .ascii-art {
+                    display: none;
+                }
+
+                .info-line {
+                    grid-template-columns: 1fr;
+                    gap: 0.5rem;
+                }
+
+                body {
+                    padding: 1rem;
+                }
+
+                .terminal {
+                    padding: 1rem;
+                }
+            }
+
+            @media print {
+                body {
+                    background: white;
+                }
+
+                .terminal {
+                    box-shadow: none;
+                    border: 1px solid #ddd;
+                }
+
+                :root {
+                    --bg: white;
+                    --bg-lighter: white;
+                    --text: #2c3e50;
+                    --pink: #e74c3c;
+                    --purple: #8e44ad;
+                    --cyan: #2980b9;
+                    --green: #27ae60;
+                    --yellow: #f39c12;
+                    --border: #bdc3c7;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="terminal">
+            <div class="titlebar">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+
+            <div class="prompt">
+                user@saahas-pc<span>:~$</span> neofetch
+            </div>
+
+            <div class="content">
+                <div class="ascii-art">
+                    [ASCII art content preserved from original]
+                </div>
+
+                <div class="info">
+                    <div class="info-line">
+                        <span class="info-label">User</span>
+                        <span class="info-value">Saahas Yechuri</span>
+                    </div>
+                    <div class="info-line">
+                        <span class="info-label">Location</span>
+                        <span class="info-value">San Francisco, CA</span>
+                    </div>
+                    <div class="info-line">
+                        <span class="info-label">Contact</span>
+                        <span class="info-value">
+                            <a href="mailto:saahas@gatech.edu" class="link">saahas@gatech.edu</a>
+                            | 484-983-4127
+                        </span>
+                    </div>
+                    <div class="info-line">
+                        <span class="info-label">Links</span>
+                        <span class="info-value">
+                            <a href="https://github.com/Suputra/" class="link">github/Suputra</a>
+                            |
+                            <a href="https://linkedin.com/in/saahas/" class="link">linkedin/saahas</a>
+                            |
+                            <a href="https://youtube.com/@saahasY" class="link">youtube/@saahasY</a>
+                        </span>
+                    </div>
+                    <div class="info-line">
+                        <span class="info-label">Bio</span>
+                        <span class="info-value">
+                            Driven engineer working on the boundary between hardware and software. 
+                            Experienced with FPGA design and verification, designing and building 
+                            mechatronic and robotic systems, and building and scaling data analysis 
+                            pipelines. In my free time, I love to read (big fan of hard sci-fi and 
+                            the future of humanity), bike, and hike!
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="command-block">
+                <div class="command">tail -f /var/log/career/experience.log</div>
+                <div class="output">
+                    <div class="section-heading">
+                        Hardware/Software Engineer @ Zoox
+                    </div>
+                    <div class="period">Jan 2022 – Present | Foster City, CA</div>
+                    <ul>
+                        <li>
+                            Designed and built a vehicle network emulator to simulate network traffic on real hardware. Developed hardware, firmware, and software for data collection, emulation, and validation.
+                        </li>
+                        <li>
+                            Analyzed 100GB+ of vehicle network data using Python; extracted characteristics into 'streamdb' files that are now used company-wide for data flow analysis and network security investigations.
+                        </li>
+                        <li>
+                            Designed a 4-layer passthrough board to inject errors into 100M/1G automotive Ethernet lines; matched BaseT impedance standards. Uncovered critical issues with missing data and fault detection.
+                        </li>
+                        <li>
+                            Optimized network data analysis speed using the MapReduce paradigm and designed data pipelines for Zoox's compute cluster.
+                        </li>
+                        <li>
+                            Utilized skills in hardware design, firmware development, software engineering (Python, C/C++), and network protocols to create the 'Network Systems Tester' (NST) emulator platform.
+                        </li>
+                        <li>
+                            Designed Test setups and Test Cases to verify the whole Time Synchronization system on Vehicle - including the Grandleader, Boundary Clocks, and Endpoints. This involved creative test setups, packet analysis, and experimentation with plotting / data analysis. Uncovered boundary cases that resulted in offset spikes due to unusually long syscalls - debugged this down to the network card driver's register read functions.
+                        </li>
+                        <li>
+                            Maintain scripts that verify functionality of Telecommunications and Time Synchronization on the manufacturing line.
+                        </li>
+                    </ul>
+
+                    <div class="section-heading">
+                        Undergraduate Researcher @ Bio-Robotics Lab
+                    </div>
+                    <div class="period">Aug 2022 – Sep 2023 | Atlanta, GA</div>
+                    <ul>
+                        <li>
+                            Developed FPGA-based hardware accelerators for Homomorphic Encryption on a Xilinx Zynq ZC702, focusing on key generation, encryption, and large integer arithmetic. Created a novel key-switching scheme for faster homomorphic operations.
+                        </li>
+                        <li>
+                            Designed and optimized Verilog modules, including an implementation of the Miller-Rabin primality test, pseudorandom number generators based on LFSRs, and efficient modular exponentiators. Balanced sequential and combinatorial logic for optimal performance and resource utilization.
+                        </li>
+                        <li>
+                            Interfaced FPGA fabric with Zynq PS using AXI IP cores and C code. Integrated ADC modules to process real-world sensor data securely. Put together a pipeline for sensor data being encrypted homomorphically.
+                        </li>
+                        <li>
+                            Extensively debugged and validated designs using Xilinx Vivado's Simulation Suite and Integrated Logic Analyzer (ILA) on both simulated and real hardware.
+                        </li>
+                    </ul>
+
+                    <div class="section-heading">
+                        Student Assistant @ STEM@GTRI
+                    </div>
+                    <div class="period">June 2021 – July 2021 | Atlanta, GA</div>
+                    <ul>
+                        <li>
+                            Mentored 10 Students in the development of an autonomous robotic arm with computer vision and high level control.
+                        </li>
+                        <li>
+                            Started from basic python lessons, and got all the way to control using DH-parameters, Finite State Machines, and Computer Vision.
+                        </li>
+                        <li>
+                            Wrote 25+ example scripts and 15+ lessons to help facilitate student understanding of various topics.
+                        </li>
+                        <li>
+                            Wrote a ROS package to integrate computer vision, inverse kinematics, and control into a simple template stack for the students.
+                        </li>
+                    </ul>
+
+                    <div class="section-heading">
+                        R&D Engineering Intern @ nth Solutions LLC
+                    </div>
+                    <div class="period">Feb 2018 – Aug 2019 | Exton, PA</div>
+                    <ul>
+                        <li>
+                            3D Modeled and printed parts for a variety of applications, including product enclosures, accessories, and test rigs. Designed and maintained 25+ 3D printed models, each for which I designed 10+ iterations.
+                        </li>
+                        <li>
+                            Wrote documentation and drew diagrams for patents. Experienced with technical writing and research.
+                        </li>
+                        <li>
+                            Programmed and range tested ESP8266 and LoRa modules to add IoT functionality to a pre-existing product.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="command-block">
+                <div class="command">whereis skills | grep -A 20 "technical"</div>
+                <div class="output">
+                    <div class="tag-section">
+                        <div class="tag-title">Programming</div>
+                        <span class="tag">Python</span>
+                        <span class="tag">C/C++</span>
+                        <span class="tag">Verilog</span>
+                        <span class="tag">GTKWave</span>
+                        <span class="tag">Verilator</span>
+                        <span class="tag">MatLab</span>
+                        <span class="tag">ROS</span>
+                        <span class="tag">OpenCV</span>
+                        <span class="tag">Linux</span>
+                        <span class="tag">bazel</span>
+                        <span class="tag">git</span>
+                        <span class="tag">linuxptp</span>
+                        <span class="tag">numpy</span>
+                        <span class="tag">scipy</span>
+                        <span class="tag">pytorch</span>
+                        <span class="tag">polars</span>
+                        <span class="tag">matplotlib</span>
+                    </div>
+
+                    <div class="tag-section">
+                        <div class="tag-title">Knowhow</div>
+                        <span class="tag">Networking & OSI model</span>
+                        <span class="tag">MapReduce paradigm</span>
+                        <span class="tag">RTL design and simulation</span>
+                        <span class="tag">bringup of μCs and SBCs</span>
+                        <span class="tag">Analytical/Numerical methods for Inverse Kinematics</span>
+                        <span class="tag">D-H parameters</span>
+                        <span class="tag">Controller Design for multi-dof robot arms</span>
+                        <span class="tag">classical/modern control theory</span>
+                        <span class="tag">Image Processing and Calibration</span>
+                        <span class="tag">Convolutional Neural Networks</span>
+                    </div>
+
+                    <div class="tag-section">
+                        <div class="tag-title">Modelling</div>
+                        <span class="tag">Vivado/Vitis</span>
+                        <span class="tag">IceStudio</span>
+                        <span class="tag">Altium</span>
+                        <span class="tag">Simulink</span>
+                        <span class="tag">Inventor</span>
+                        <span class="tag">Solidworks</span>
+                        <span class="tag">Ansys</span>
+                    </div>
+
+                    <div class="tag-section">
+                        <div class="tag-title">Tools</div>
+                        <span class="tag">3D Printing</span>
+                        <span class="tag">Laser cutting</span>
+                        <span class="tag">Woodshop Tools</span>
+                        <span class="tag">Soldering (THT & SMT)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="command-block">
+                <div class="command">ls -l ~/projects/</div>
+                <div class="output">
+                    <div class="section-heading">FPGA Based Ethernet MAC/PHY</div>
+                    <ul>
+                        <li>
+                            Designed and Tested Verilog modules for a Simple 10BaseT MAC and PHY following IEEE 802.3 to transmit fixed Layer 2 Ethernet packets. Debugged and Tested my design using Verilator and gtkwave. Working on expanding this to Layer 3+
+                        </li>
+                    </ul>
+
+                    <div class="section-heading">Chess Robot</div>
+                    <ul>
+                        <li>
+                            Using an old 3d printer frame, built a chess robot. Designed the motor control circuits, wrote the Firmware for low level control of them, and the code for move detection using fiducial markers (AprilTags) and generation. Demo videos on Youtube.
+                        </li>
+                    </ul>
+
+                    <div class="section-heading">Gyro-Boat</div>
+                    <ul>
+                        <li>
+                            Built a model boat stabilized by a gyroscope, inspired off of Sperry's Gyro-Stabilizer. Demo videos on Youtube.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="command-block">
+                <div class="command">ls -l ~/patents/</div>
+                <div class="output">
+                    <div class="section-heading">Patents</div>
+                    <ul>
+                        <li>
+                            Patent# US-11287348-B2: Apparatus for measuring imbalance forces of a tire/hub assembly of a vehicle during motion of the vehicle (Issued Mar 29, 2022)
+                        </li>
+                        <li>
+                            Patent# US-10701266-B2: Method for reading out contents of a video file having a predefined video file format (Issued Jun 30, 2020)
+                        </li>
+                        <li>
+                            Patent# US-10469750-B1: Method for embedding motion data of an object into a video file to allow for synchronized visualization of the motion data upon playback of the video file (Issued Nov 5, 2019)
+                        </li>
+                        <li>
+                            Patent# US-10284752-B1: Method for determining a start offset between a video recording device and an inertial measurement unit for use in synchronizing motion data of an object collected by the inertial measurement unit attached to the object with video frames captured by an image sensor of the video recording device of the object in motion (Issued May 7, 2019)
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="command-block">
+                <div class="command">cat ~/awards.md</div>
+                <div class="output">
+                    <div class="section-heading">Awards & Recognition</div>
+                    <ul>
+                        <li>Hack for Social Impact - 1st Place (2024)</li>
+                        <li>
+                            Developed "Arboren" a tool to help UNCCD (UN Committee to Combat Desertification) analysts and policymakers more easily find and visualize map based data. Presented our hack during UNCCD's COP 16 in Riyadh, Saudi Arabia.
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>SII2024 Conference Paper on FPGA based Key Generation (2023)</li>
+                        <li>
+                            Wrote a paper on my work in developing a sensor data encryption system using an FPGA, and it was accepted to the upcoming Symposium on System Integration in Ha Long Bay, Vietnam.
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>President's Undergraduate Research Award (PURA) (2022)</li>
+                        <li>
+                            Funded to do research on Accelerating Homomorphic Encryption using FPGAs. Mentored an undergraduate student on FPGA design and HDL programming, and presented at Georgia Tech's undergraduate research symposium.
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>NASA SpaceApps – Best Use of Technology (2021)</li>
+                        <li>
+                            Developed a hardware hack for smoother separations of components in space. Utilized electromagnetic and hydraulic principles to create a compact and smoothly controllable Force Multiplier that can hold a preload of up to 16kN. Info on Github.
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>MIT COVID-19 Challenge – Winning Team (2020)</li>
+                        <li>
+                            Our winning hack, "COValert", envisioned an AI-powered SMS chatbot to augment at-home triage capabilities in rural communities lacking broadband internet access.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="command-block">
+                <div class="command">cat ~/education.txt</div>
+                <div class="output">
+                    <div class="section-heading">Georgia Institute of Technology</div>
+                    <ul>
+                        <li>BS in Mechanical Engineering</li>
+                        <li>GPA: 4.0</li>
+                        <li class="section-heading">Relevant Coursework:</li>
+                        <li>Control of Dynamic Systems, Robotics, Mechatronics, Machine Design</li>
+                        <li>System Dynamics, Thermal and Fluids Laboratory, Experimental Methods</li>
+                        <li>Heat Transfer, Fluid Mechanics, Thermodynamics, Numerical Methods</li>
+                        <li>Deformable Bodies, Dynamics, Statics, Digital/Analog Circuits</li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="prompt">
+                user@saahas-pc<span>:~$</span> <span class="cursor"></span>
+            </div>
+        </div>
+    </body>
+</html>

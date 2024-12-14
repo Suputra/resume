@@ -1,0 +1,232 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+% Awesome CV LaTeX Template
+%
+% This template has been downloaded from:
+% https://github.com/posquit0/Awesome-CV
+%
+% Author:
+% Claud D. Park <posquit0.bj@gmail.com>
+% http://www.posquit0.com
+%
+% Template license:
+% CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Configuration
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Themes: Awesome-CV
+\documentclass[]{awesome-cv}
+\usepackage{textcomp}
+\usepackage{hyperref}
+%%% Override a directory location for fonts(default: 'fonts/')
+\fontdir[fonts/]
+
+%%% Configure a directory location for sections
+\newcommand*{\sectiondir}{resume/}
+
+%%% Override color
+% Awesome Colors: awesome-emerald, awesome-skyblue, awesome-red, awesome-pink, awesome-orange
+%                 awesome-nephritis, awesome-concrete, awesome-darknight
+%% Color for highlight
+% Define your custom color if you don't like awesome colors
+\colorlet{awesome}{awesome-red}
+%\definecolor{awesome}{HTML}{CA63A8}
+%% Colors for text
+%\definecolor{darktext}{HTML}{414141}
+%\definecolor{text}{HTML}{414141}
+%\definecolor{graytext}{HTML}{414141}
+%\definecolor{lighttext}{HTML}{414141}
+
+%%% Override a separator for social informations in header(default: ' | ')
+%\headersocialsep[\quad\textbar\quad]
+    \begin{document}
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Profile
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+	\headerfirstnamestyle{Saahas} \headerlastnamestyle{Yechuri} \\
+	\vspace{1pt}
+	{\faEnvelope\ \href{mailto:saahas.yechuri@gatech.edu}{saahas@gatech.edu}} | {\faMobile\ 484-983-4127} | {\faMapMarker\ San Francisco, CA} 
+	\\* {\faGithub\ \url{https://github.com/Suputra/}} | {\faLinkedin\ \url{https://www.linkedin.com/in/saahas/} | \url{https://youtube.com/@saahasY}}
+	
+\end{center}
+
+Driven engineer working on the boundary between hardware and software. Experienced with FPGA design and verification, designing and building mechatronic and robotic systems, and building and scaling data analysis pipelines. In my free time, I love to read (big fan of hard sci-fi and the future of humanity), bike, and hike!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Experience
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\cvsection{Experience}
+\begin{cventries}
+    \cventry
+    {Hardware/Software Engineer}
+    {Zoox}
+    {Foster City, CA}
+    {Jan 2022 – Present}
+        {\begin{cvitems}
+        \item {Designed and built a vehicle network emulator to simulate network traffic on real hardware. Developed hardware, firmware, and software for data collection, emulation, and validation.}
+        \item {Analyzed 100GB+ of vehicle network data using Python; extracted characteristics into 'streamdb' files that are now used company-wide for data flow analysis and network security investigations.}
+        \item {Designed a 4-layer passthrough board to inject errors into 100M/1G automotive Ethernet lines; matched BaseT impedance standards. Uncovered critical issues with missing data and fault detection.}
+        \item {Optimized network data analysis speed using the MapReduce paradigm and designed data pipelines for Zoox's compute cluster.}
+        \item {Utilized skills in hardware design, firmware development, software engineering (Python, C/C++), and network protocols to create the 'Network Systems Tester' (NST) emulator platform.}
+        \item {Designed Test setups and Test Cases to verify the whole Time Synchronization system on Vehicle - including the Grandleader, Boundary Clocks, and Endpoints. This involved creative test setups, packet analysis, and experimentation with plotting / data analysis. Uncovered boundary cases that resulted in offset spikes due to unusually long syscalls - debugged this down to the network card driver's register read functions.}
+        \item {Maintain scripts that verify functionality of Telecommunications and Time Synchronization on the manufacturing line.}
+    \end{cvitems}}
+    \cventry
+	{Undergraduate Researcher}
+    {Bio-Robotics and Human Modelling Lab}
+    {Atlanta, GA}
+    {Aug 2022 – Sep 2023}
+    {\begin{cvitems}
+        \item {Developed FPGA-based hardware accelerators for Homomorphic Encryption on a Xilinx Zynq ZC702, focusing on key generation, encryption, and large integer arithmetic. Created a novel key-switching scheme for faster homomorphic operations.}
+        \item {Designed and optimized Verilog modules, including an implementation of the Miller-Rabin primality test, pseudorandom number generators based on LFSRs, and efficient modular exponentiators. Balanced sequential and combinatorial logic for optimal performance and resource utilization.}
+        \item {Interfaced FPGA fabric with Zynq PS using AXI IP cores and C code. Integrated ADC modules to process real-world sensor data securely. Put together a pipeline for sensor data being encrypted homomorphically.}
+        \item {Extensively debugged and validated designs using Xilinx Vivado's Simulation Suite and Integrated Logic Analyzer (ILA) on both simulated and real hardware.}
+    \end{cvitems}}
+	\cventry 
+	{Undergraduate Student Assistant}
+	{STEM@GTRI - ISTD project}
+	{Atlanta, GA}
+	{June 2021 – July 2021}
+	{\begin{cvitems}
+	    \item {Mentored 10 Students in the development of an autonomous robotic arm with computer vision and high level control.}
+	    \item {Started from basic python lessons, and got all the way to control using DH-parameters, Finite State Machines, and Computer Vision.}
+	    \item {Wrote 25+ example scripts and 15+ lessons to help facilitate student understanding of various topics.}
+	    \item {Wrote a ROS package to integrate computer vision, inverse kinematics, and control into a simple template stack for the students.}
+		\end{cvitems}}
+	% \cventry
+	% {Hardware/ROS team research student}
+	% {Robot Collective}
+	% {Atlanta, GA}
+	% {Jan 2021 – Present}
+	% {\begin{cvitems}
+	% 	\item {Augmented Zumo Robots with 3D printed parts, a Raspberry Pi Zero W for control, and Qi charging circuitry for autonomous operation.}
+	% 	\item {Used Docker to cross-compile ROS2 for use on a Raspberry Pi Zero W.}
+	% 	\item {Wrote ROS2 packages for deployment on a Jetson Nano and Raspberry Pi Zero W. Created custom messages and actions.}
+	% 	\item {Wrote Apriltag recognition code for localization of robots from above.}
+	% 	\end{cvitems}}
+	\cventry
+	{R\&D Engineering Intern}
+	{n\textsuperscript{th} Solutions LLC}
+	{Exton, PA}
+	{Feb 2018 – Aug 2019}
+	{\begin{cvitems}
+		\item {3D Modeled and printed parts for a variety of applications, including product enclosures, accessories, and test rigs. Designed and maintained 25+ 3D printed models, each for which I designed 10+ iterations.}
+		\item {Wrote documentation and drew diagrams for patents. Experienced with technical writing and research.}
+		\item {Programmed and range tested ESP8266 and LoRa modules to add IoT functionality to a pre-existing product.}
+		\end{cvitems}}
+\end{cventries}
+\vspace{-15pt}
+
+\cvsection{Skills}
+\begin{cventries}
+    \vspace{-10pt}
+	\cventry
+	{}
+	{\def\arraystretch{1.15}{\begin{tabular}{ l l }
+		Programming: & {\skill{ Python, C/C++, Verilog, GTKWave, Verilator, MatLab, ROS, OpenCV, Linux, bazel, git, linuxptp, numpy, scipy, pytorch, polars, matplotlib \LaTeX }} \\
+        Knowhow: & {\skill{Networing \& OSI model, MapReduce paradigm, RTL design and simulation, bringup of $\mu$Cs and SBCs, Analytical/Numerical methods for Inverse Kinematics, D-H parameters, Controller Design for multi-dof robot arms, classical/modern control theory, Image Processing and Calibration, Convolutional Neural Networks}} \\
+        Modelling: & {\skill{Vivado/Vitis, IceStudio, Altium, Simulink, Inventor, Solidworks, Ansys}} \\
+        Tools: & {\skill{ 3D Printing, Laser cutting, Woodshop Tools, Soldering (THT \& SMT)}} \\
+		\end{tabular}}}
+	{}
+	{}
+	{}
+\end{cventries}
+\vspace{-15pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Education
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\cvsection{Education}
+\begin{cventries}
+	\cventry
+	{BS in Mechanical Engineering}
+	{Georgia Institute of Technology}
+	{Atlanta, GA}
+	{   }
+	{\textbf{GPA: 4.0} \newline \textbf{Relevant Coursework:} Control of Dynamic Systems, Robotics, Mechatronics, Machine Design, System Dynamics, Thermal and Fluids Laboratory, Experimental Methods, Heat Transfer, Fluid Mechanics, Thermodynamics, Numerical Methods, Deformable Bodies, Dynamics, Statics, Digital/Analog Circuits}
+\end{cventries}
+\cvsection{Projects}
+\begin{cventries}
+\cventry
+	{Designed and Tested Verilog modules for a Simple 10BaseT MAC and PHY following IEEE 802.3 to transmit fixed Layer 2 Ethernet packets. Debugged and Tested my design using Verilator and gtkwave. Working on expanding this to Layer 3+}
+	{FPGA Based Ethernet MAC/PHY}
+	{Verilog, Verilator, GTKWave}
+	{}
+	{}
+	
+	\vspace{-20pt}
+	\cventry
+	{Using an old 3d printer frame, built a chess robot.Designed the motor control circuits, wrote the Firmware for low level control of them, and the code for move detection using fiducial markers (AprilTags) and generation. Demo videos on Youtube.}
+	{Chess Robot}
+	{Python, C/C++, Circuit Design}
+	{}
+	{}
+	
+	\vspace{-20pt}
+	\cventry
+	{Built a model boat stabilized by a gyroscope, inspired off of Sperry's Gyro-Stabilizer. Demo videos on Youtube.}
+	{Gyro-Boat}
+	{Solidworks, 3D printing}
+	{}
+	{}
+\end{cventries}
+\vspace{-15pt}
+\cvsection{Awards}
+\begin{cvhonors}
+	\cvhonor
+	{MIT COVID-19 Challenge – Winning Team}
+	{Our winning hack, “COValert”, envisioned an AI-powered SMS chatbot to augment at-home triage capabilities in rural communities lacking broadband internet access.}
+	{}
+	{2020}
+	\cvhonor
+	{NASA SpaceApps – Best Use of Technology}
+	{Developed a hardware hack for smoother separations of components in space. Utilized electromagnetic and hydraulic principles to create a compact and smoothly controllable Force Multiplier that can hold a preload of up to 16kN. Info on Github.}
+	{}
+	{2021}
+    \cvhonor
+	{President's Undergraduate Research Award (PURA)}
+	{Funded to do research on Accelerating Homomorphic Encryption using FPGAs. Mentored an undergraduate student on FPGA design and HDL programming, and presented at Georgia Tech's undergraduate research symposium.}
+	{}
+	{2022}
+    \cvhonor
+	{SII2024 Conference Paper on FPGA based Key Generation}
+	{Wrote a paper on my work in developing a sensor data encryption system using an FPGA, and it was accepted to the upcoming Symposium on System Integration in Ha Long Bay, Vietnam.}
+	{}
+	{2023}
+    \cvhonor
+	{Hack for Social Impact - 1st Place}
+	{Developed "Arboren" a tool to help UNCCD (UN Committee to Combat Desertification) analysts and policymakers more easily find and visualize map based data. Presented our hack during UNCCD's COP 16 in Riyadh, Saudi Arabia.}
+	{}
+	{2024}
+\end{cvhonors}
+\cvsection{Patents}
+\begin{cvhonors}
+    \cvhonor
+	{Patent\# US-11287348-B2}
+	{Apparatus for measuring imbalance forces of a tire/hub assembly of a vehicle during motion of the vehicle}
+	{}
+	{Issued Mar 29, 2022}
+	\cvhonor
+	{Patent\# US-10701266-B2}
+	{Method for reading out contents of a video file having a predefined video file format}
+	{}
+	{Issued Jun 30, 2020}
+	\cvhonor
+	{Patent\# US-10469750-B1}
+	{Method for embedding motion data of an object into a video file to allow for synchronized visualization of the motion data upon playback of the video file}
+	{}
+	{Issued Nov 5, 2019}
+	\cvhonor
+	{Patent\# US-10284752-B1}
+	{Method for determining a start offset between a video recording device and an inertial measurement unit for use in synchronizing motion data of an object collected by the inertial measurement unit attached to the object with video frames captured by an image sensor of the video recording device of the object in motion}
+	{}
+	{Issued May 7, 2019}
+\end{cvhonors}
+
+\ 
+\end{document}

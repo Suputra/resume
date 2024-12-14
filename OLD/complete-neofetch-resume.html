@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Saahas Yechuri - Resume</title>
+        <style>
+            /* [Previous styles remain the same until .command-block] */
+            @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap");
+
+            :root {
+                --bg: #1a1b26;
+                --bg-lighter: #24283b;
+                --text: #c0caf5;
+                --pink: #f7768e;
+                --purple: #bb9af7;
+                --cyan: #7dcfff;
+                --green: #9ece6a;
+                --yellow: #e0af68;
+                --border: #414868;
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: "JetBrains Mono", monospace;
+            }
+
+            body {
+                background: var(--bg);
+                color: var(--text);
+                padding: 2rem;
+                line-height: 1.5;
+            }
+
+            .terminal {
+                max-width: 1200px;
+                margin: 0 auto;
+                background: var(--bg-lighter);
+                padding: 2rem;
+                border-radius: 12px;
+                box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+            }
+
+            .titlebar {
+                display: flex;
+                align-items: center;
+                margin-bottom: 2rem;
+                padding-bottom: 0.5rem;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .circle {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                margin-right: 8px;
+            }
+
+            .circle:nth-child(1) {
+                background: var(--pink);
+            }
+            .circle:nth-child(2) {
+                background: var(--yellow);
+            }
+            .circle:nth-child(3) {
+                background: var(--green);
+            }
+
+            .prompt {
+                color: var(--purple);
+                margin-bottom: 1rem;
+            }
+
+            .prompt span {
+                color: var(--text);
+            }
+
+            .command-block {
+                margin-top: 1.5rem;
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                padding: 1.5rem;
+                background: rgba(0, 0, 0, 0.2);
+            }
+
+            .command {
+                color: var(--green);
+                margin-bottom: 1rem;
+                border-bottom: 1px solid var(--border);
+                padding-bottom: 0.5rem;
+            }
+
+            .output {
+                color: var(--text);
+                margin-left: 1rem;
+            }
+
+            .output p {
+                margin-bottom: 1rem;
+            }
+
+            .exp-item {
+                margin-bottom: 1.5rem;
+                padding-left: 1rem;
+                border-left: 2px solid var(--purple);
+            }
+
+            .exp-title {
+                color: var(--cyan);
+                font-weight: 600;
+            }
+
+            .exp-meta {
+                color: var(--yellow);
+                font-size: 0.9em;
+                margin-bottom: 0.5rem;
+            }
+
+            .exp-details {
+                padding-left: 1rem;
+            }
+
+            .exp-details li {
+                list-style-type: none;
+                margin-bottom: 0.5rem;
+                position: relative;
+            }
+
+            .exp-details li::before {
+                content: "▸";
+                color: var(--green);
+                position: absolute;
+                left: -1rem;
+            }
+
+            .tag-section {
+                margin-bottom: 1rem;
+            }
+
+            .tag-title {
+                color: var(--pink);
+                margin-bottom: 0.5rem;
+            }
+
+            .tag {
+                background: var(--bg);
+                color: var(--purple);
+                padding: 0.2rem 0.5rem;
+                border-radius: 4px;
+                display: inline-block;
+                margin: 0.2rem;
+                font-size: 0.9em;
+            }
+
+            .project {
+                margin-bottom: 1.5rem;
+                padding: 1rem;
+                background: rgba(0, 0, 0, 0.1);
+                border-radius: 4px;
+                border: 1px solid var(--border);
+            }
+
+            .project-title {
+                color: var(--cyan);
+                margin-bottom: 0.5rem;
+            }
+
+            .award {
+                margin-bottom: 1rem;
+                padding-left: 1rem;
+                position: relative;
+            }
+
+            .award::before {
+                content: "★";
+                color: var(--yellow);
+                position: absolute;
+                left: 0;
+            }
+
+            .award-year {
+                color: var(--pink);
+            }
+
+            .award-title {
+                color: var(--cyan);
+            }
+
+            .summary {
+                color: var(--text);
+                font-style: italic;
+                padding: 1rem;
+                border-left: 2px solid var(--yellow);
+                margin-bottom: 1.5rem;
+            }
+
+            @media print {
+                body {
+                    background: white;
+                }
+
+                .terminal {
+                    box-shadow: none;
+                    padding: 1rem;
+                }
+
+                :root {
+                    --bg: white;
+                    --bg-lighter: white;
+                    --text: #2c3e50;
+                    --pink: #e74c3c;
+                    --purple: #8e44ad;
+                    --cyan: #16a085;
+                    --green: #27ae60;
+                    --yellow: #f39c12;
+                    --border: #bdc3c7;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="terminal">
+            <div class="titlebar">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+
+            <div class="prompt">user@saahas-pc<span>:~$</span> neofetch</div>
+
+            <div class="summary">
+                Driven engineer working on the boundary between hardware and
+                software. Experienced with FPGA design and verification,
+                designing and building mechatronic and robotic systems, and
+                building and scaling data analysis pipelines. In my free time, I
+                love to read (big fan of hard sci-fi and the future of
+                humanity), bike, and hike!
+            </div>
+
+            <div class="command-block">
+                <div class="command">cat experience.txt</div>
+                <div class="output">
+                    <div class="exp-item">
+                        <div class="exp-title">Hardware/Software Engineer</div>
+                        <div class="exp-meta">
+                            Zoox | Foster City, CA | Jan 2022 – Present
+                        </div>
+                        <ul class="exp-details">
+                            <li>
+                                Designed and built a vehicle network emulator to
+                                simulate network traffic on real hardware
+                            </li>
+                            <li>
+                                Analyzed 100GB+ of vehicle network data using
+                                Python; created company-wide 'streamdb' standard
+                            </li>
+                            <li>
+                                Designed 4-layer passthrough board for
+                                automotive Ethernet testing
+                            </li>
+                            <li>
+                                Optimized network data analysis using MapReduce
+                                paradigm
+                            </li>
+                            <li>
+                                Led verification of vehicle Time Synchronization
+                                system
+                            </li>
+                            <li>
+                                Maintain manufacturing line telecommunications
+                                verification scripts
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="exp-item">
+                        <div class="exp-title">Undergraduate Researcher</div>
+                        <div class="exp-meta">
+                            Bio-Robotics Lab | Georgia Tech | Aug 2022 – Sep
+                            2023
+                        </div>
+                        <ul class="exp-details">
+                            <li>
+                                Developed FPGA-based hardware accelerators for
+                                Homomorphic Encryption
+                            </li>
+                            <li>
+                                Designed and optimized Verilog modules for
+                                cryptographic operations
+                            </li>
+                            <li>
+                                Interfaced FPGA fabric with Zynq PS using AXI IP
+                                cores
+                            </li>
+                            <li>
+                                Created novel key-switching scheme for faster
+                                homomorphic operations
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="exp-item">
+                        <div class="exp-title">
+                            Undergraduate Student Assistant
+                        </div>
+                        <div class="exp-meta">
+                            STEM@GTRI | Atlanta, GA | June 2021 – July 2021
+                        </div>
+                        <ul class="exp-details">
+                            <li>
+                                Mentored 10 Students in autonomous robotic arm
+                                development
+                            </li>
+                            <li>
+                                Created comprehensive curriculum from Python
+                                basics to Computer Vision
+                            </li>
+                            <li>
+                                Developed ROS package integrating vision,
+                                kinematics, and control
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="exp-item">
+                        <div class="exp-title">R&D Engineering Intern</div>
+                        <div class="exp-meta">
+                            nth Solutions LLC | Exton, PA | Feb 2018 – Aug 2019
+                        </div>
+                        <ul class="exp-details">
+                            <li>
+                                Designed and iterated on 25+ 3D printed product
+                                models
+                            </li>
+                            <li>
+                                Created technical documentation and patent
+                                diagrams
+                            </li>
+                            <li>
+                                Integrated IoT functionality using ESP8266 and
+                                LoRa modules
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="command-block">
+                <div class="command">cat skills.txt</div>
+                <div class="output">
+                    <div class="tag-section">
+                        <div class="tag-title">Programming</div>
+                        <span class="tag">Python</span>
+                        <span class="tag">C/C++</span>
+                        <span class="tag">Verilog</span>
+                        <span class="tag">MATLAB</span>
+                    </div>
+
+                    <div class="tag-section">
+                        <div class="tag-title">Tools & Frameworks</div>
+                        <span class="tag">ROS</span>
+                        <span class="tag">OpenCV</span>
+                        <span class="tag">Linux</span>
+                        <span class="tag">Bazel</span>
+                        <span class="tag">Git</span>
+                        <span class="tag">NumPy</span>
+                        <span class="tag">SciPy</span>
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">GTKWave</span>
+                        <span class="tag">Verilator</span>
+                    </div>
+
+                    <div class="tag-section">
+                        <div class="tag-title">Domain Knowledge</div>
+                        <span class="tag">Networking & OSI Model</span>
+                        <span class="tag">MapReduce</span>
+                        <span class="tag">RTL Design</span>
+                        <span class="tag">Microcontroller Development</span>
+                        <span class="tag">Robotics</span>
+                        <span class="tag">Computer Vision</span>
+                        <span class="tag">Hardware Security</span>
+                    </div>
+
+                    <div class="tag-section">
+                        <div class="tag-title">Hardware Tools</div>
+                        <span class="tag">Vivado/Vitis</span>
+                        <span class="tag">Altium</span>
+                        <span class="tag">Simulink</span>
+                        <span class="tag">Inventor</span>
+                        <span class="tag">Solidworks</span>
+                        <span class="tag">3D Printing</span>
+                        <span class="tag">Laser Cutting</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="command-block">
+                <div class="command">ls ~/projects/</div>
+                <div class="output">
+                    <div class="project">
+                        <div class="project-title">
+                            FPGA-Based Ethernet MAC/PHY
+                        </div>
+                        <p>
+                            Implemented IEEE 802.3 compliant 10BaseT MAC/PHY.
+                            Developed comprehensive test suite using Verilator
+                            and GTKWave.
+                        </p>
+                    </div>
+
+                    <div class="project">
+                        <div class="project-title">Chess Robot</div>
+                        <p>
+                            Converted 3D printer frame into autonomous
+                            chess-playing robot. Designed motor control circuits
+                            and implemented computer vision using AprilTags.
+                        </p>
+                    </div>
+
+                    <div class="project">
+                        <div class="project-title">Gyro-Boat</div>
+                        <p>
+                            Built a model boat stabilized by a gyroscope,
+                            inspired by Sperry's Gyro-Stabilizer. Created
+                            demonstration videos available on YouTube.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="command-block">
+                <div class="command">cat awards.txt</div>
+                <div class="output">
+                    <div class="award">
+                        <span class="award-year">2024</span> -
+                        <span class="award-title"
+                            >Hack for Social Impact - 1st Place</span
+                        >
+                        <p>
+                            Developed "Arboren" for UNCCD analysts and
+                            policymakers
+                        </p>
+                    </div>
+                    <div class="award">
+                        <span class="award-year">2023</span> -
+                        <span class="award-title"
+                            >SII2024 Conference Paper Acceptance</span
+                        >
+                        <p>
+                            Paper on FPGA-based Key Generation accepted at
+                            System Integration symposium
+                        </p>
+                    </div>
+                    <div class="award">
+                        <span class="award-year">2022</span> -
+                        <span class="award-title"
+                            >President's Undergraduate Research Award</span
+                        >
+                        <p>
+                            Research funding for FPGA acceleration of
+                            Homomorphic Encryption
+                        </p>
+                    </div>
+                    <div class="award">
+                        <span class="award-year">2021</span> -
+                        <span class="award-title"
+                            >NASA SpaceApps - Best Use of Technology</span
+                        >
+                        <p>
+                            Created hardware solution for smooth component
+                            separation in space
+                        </p>
+                    </div>
+                    <div class="award">
+                        <span class="award-year">2020</span> -
+                        <span class="award-title"
+                            >MIT COVID-19 Challenge - Winner</span
+                        >
+                        <p>
+                            Developed COValert chatbot for rural healthcare
+                            triage
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="command-block">
+                <div class="command">cat patents.txt</div>
+                <div class="output">
+                    <div class="exp-item">
+                        <div class="exp-title">US 11,287,348 B2 (2022)</div>
+                        <p>
+                            Apparatus for measuring imbalance forces of a
+                            tire/hub assembly
+                        </p>
+                    </div>
+                    <div class="exp-item">
+                        <div class="exp-title">US 10,701,266 B2 (2020)</div>
+                        <p>
+                            Method for reading out contents of a video file
+                            having a predefined format
+                        </p>
+                    </div>
+                    <div class="exp-item">
+                        <div class="exp-title">US 10,469,750 B1 (2019)</div>
+                        <p>Method for embedding motion data of an</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
