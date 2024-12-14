@@ -667,6 +667,38 @@
             </div>
 
             <div class="command-block">
+                <div class="command">cat ~/.resume/awards.txt | column -t -s ';' | sed '1,2s/./-/g'</div>
+                <div class="output">
+                    <div class="command-output">
+                        <pre>
+                                            Awards & Recognition
+---------------------------------------------------------------------------------------------------------------
+Year  Award                                  Organization  Details
+---------------------------------------------------------------------------------------------------------------
+2024  Hack for Social Impact (1st Place)     UNCCD         Developed "Arboren" to help UN analysts visualize 
+                                                           and analyze desertification data. Presented at 
+                                                           COP 16 in Riyadh.
+
+2023  SII2024 Conference Paper               IEEE          FPGA-based sensor encryption system paper accepted 
+                                                           to Symposium on System Integration in Ha Long Bay,
+                                                           Vietnam.
+
+2022  President's Undergraduate              Georgia       Funded to do research on Homomorphic Encryption with 
+      Research Award (PURA)                  Tech          FPGAs. Mentored a student on FPGA development, and 
+                                                           presented findings at a research symposium.
+
+2021  NASA SpaceApps                         NASA          Developed novel space component separation system.
+      Best Use of Technology                               used electromagnetic and hydraulic principles to 
+                                                           apply a 16kN preload.
+
+2020  MIT COVID-19 Challenge                 MIT           Created "COValert" SMS chatbot for rural COVID 
+      Winning Team                                         triage for areas without internet access.  
+---------------------------------------------------------------------------------------------------------------</pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="command-block">
                 <div class="command">find ~/patents -type f -name "*.pdf" -exec sh -c 'echo "==> $1 <=="; pdftotext "$1" - | head -n 1' sh {} \; | bat --style=grid</div>
                 <div class="output">
                     <div class="command-output">
@@ -695,34 +727,6 @@
 ==> ~/patents/US-10284752-B1.pdf <==
 <span class="patent-id">US-10284752-B1</span>: <span class="highlight">Method for determining a start offset between a video recording device and an inertial measurement unit</span>
 (Issued May 7, 2019)</pre>
-                    </div>
-                </div>
-            </div>
-
-            <div class="command-block">
-                <div class="command">bat --style=grid ~/.resume/awards.md</div>
-                <div class="output">
-                    <div class="command-output">
-                        <pre>───────┬──────────────────────────────────────────────────────────────────────────────────────────────────────
-       │ ~/.resume/awards.md
-───────┴──────────────────────────────────────────────────────────────────────────────────────────────────────
-
-# Awards & Recognition
-
-## Hack for Social Impact - 1st Place (2024)
-Developed "Arboren" a tool to help UNCCD (UN Committee to Combat Desertification) analysts and policymakers more easily find and visualize map based data. Presented our hack during UNCCD's COP 16 in Riyadh, Saudi Arabia.
-
-## SII2024 Conference Paper on FPGA based Key Generation (2023)
-Wrote a paper on my work in developing a sensor data encryption system using an FPGA, and it was accepted to the upcoming Symposium on System Integration in Ha Long Bay, Vietnam.
-
-## President's Undergraduate Research Award (PURA) (2022)
-Funded to do research on Accelerating Homomorphic Encryption using FPGAs. Mentored an undergraduate student on FPGA design and HDL programming, and presented at Georgia Tech's undergraduate research symposium.
-
-## NASA SpaceApps – Best Use of Technology (2021)
-Developed a hardware hack for smoother separations of components in space. Utilized electromagnetic and hydraulic principles to create a compact and smoothly controllable Force Multiplier that can hold a preload of up to 16kN. Info on Github.
-
-## MIT COVID-19 Challenge – Winning Team (2020)
-Our winning hack, "COValert", envisioned an AI-powered SMS chatbot to augment at-home triage capabilities in rural communities lacking broadband internet access.</pre>
                     </div>
                 </div>
             </div>
