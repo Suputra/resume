@@ -650,18 +650,28 @@
             </div>
 
             <div class="command-block">
-                <div class="command">tree ~/projects --charset=ascii -L 2</div>
+                <div class="command">tree ~/projects --charset=ascii -L 3</div>
                 <div class="output">
                     <div class="tree-output">
 /projects
 ├── FPGA Based Ethernet MAC/PHY
-<span class="tree-description">Designed and Tested Verilog modules for a Simple 10BaseT MAC and PHY following IEEE 802.3 to transmit fixed Layer 2 Ethernet packets. Debugged and Tested my design using Verilator and gtkwave. Working on expanding this to Layer 3+</span>
+│   └── description.txt
+│       Designed and Tested Verilog modules for a Simple 10BaseT MAC and PHY 
+│       following IEEE 802.3 to transmit fixed Layer 2 Ethernet packets. Debugged 
+│       and Tested using Verilator and gtkwave. Working on expanding to Layer 3+
+│
 ├── Chess Robot
-<span class="tree-description">Using an old 3d printer frame, built a chess robot. Designed the motor control circuits, wrote the Firmware for low level control of them, and the code for move detection using fiducial markers (AprilTags) and generation. Demo videos on Youtube.</span>
+│   └── description.txt
+│       Using an old 3d printer frame, built a chess robot. Designed motor control 
+│       circuits, wrote Firmware for low level control, and code for move detection 
+│       using fiducial markers (AprilTags) and generation. Demo videos on Youtube.
+│
 └── Gyro-Boat
-<span class="tree-description">Built a model boat stabilized by a gyroscope, inspired off of Sperry's Gyro-Stabilizer. Demo videos on Youtube.</span>
+    └── description.txt
+        Built a model boat stabilized by a gyroscope, inspired by Sperry's 
+        Gyro-Stabilizer. Demo videos on Youtube.
 
-3 directories</pre>
+3 directories, 6 files</pre>
                     </div>
                 </div>
             </div>
@@ -732,12 +742,10 @@ Year  Award                                  Organization  Details
             </div>
 
             <div class="command-block">
-                <div class="command">bat --style=grid ~/.resume/education.yml</div>
+                <div class="command">cat ~/.resume/education.yml</div>
                 <div class="output">
                     <div class="command-output">
-                        <pre>───────┬──────────────────────────────────────────────────────────── 
-       │ ~/.resume/education.yml
-───────┴────────────────────────────────────────────────────────────
+                        <pre>
 institution: Georgia Institute of Technology
 degree: BS in Mechanical Engineering
 gpa: 4.0
