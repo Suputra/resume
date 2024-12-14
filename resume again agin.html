@@ -358,6 +358,28 @@
                 word-wrap: break-word;
                 overflow-wrap: break-word;
             }
+
+            .tree-output {
+                font-family: "JetBrains Mono", monospace;
+                white-space: pre;
+                line-height: 1.2;
+            }
+
+            .tree-output .tree-prefix {
+                color: var(--purple);
+            }
+
+            .tree-output .tree-name {
+                color: var(--cyan);
+            }
+
+            .tree-output .tree-description {
+                color: var(--text);
+                padding-left: 4ch;
+                display: block;
+                white-space: pre-wrap;
+                margin-bottom: 1rem;
+            }
         </style>
     </head>
     <body>
@@ -505,85 +527,83 @@
             <div class="command-block">
                 <div class="command">jq -r '.skills | group_by(.category)[]' ~/.resume/skills.json | bat --style=grid</div>
                 <div class="output">
-                    <div class="tag-section">
-                        <div class="tag-title">Programming</div>
-                        <span class="tag">Python</span>
-                        <span class="tag">C/C++</span>
-                        <span class="tag">Verilog</span>
-                        <span class="tag">GTKWave</span>
-                        <span class="tag">Verilator</span>
-                        <span class="tag">MatLab</span>
-                        <span class="tag">ROS</span>
-                        <span class="tag">OpenCV</span>
-                        <span class="tag">Linux</span>
-                        <span class="tag">bazel</span>
-                        <span class="tag">git</span>
-                        <span class="tag">linuxptp</span>
-                        <span class="tag">numpy</span>
-                        <span class="tag">scipy</span>
-                        <span class="tag">pytorch</span>
-                        <span class="tag">polars</span>
-                        <span class="tag">matplotlib</span>
-                    </div>
-
-                    <div class="tag-section">
-                        <div class="tag-title">Knowhow</div>
-                        <span class="tag">Networking & OSI model</span>
-                        <span class="tag">MapReduce paradigm</span>
-                        <span class="tag">RTL design and simulation</span>
-                        <span class="tag">bringup of μCs and SBCs</span>
-                        <span class="tag">Analytical/Numerical methods for Inverse Kinematics</span>
-                        <span class="tag">D-H parameters</span>
-                        <span class="tag">Controller Design for multi-dof robot arms</span>
-                        <span class="tag">classical/modern control theory</span>
-                        <span class="tag">Image Processing and Calibration</span>
-                        <span class="tag">Convolutional Neural Networks</span>
-                    </div>
-
-                    <div class="tag-section">
-                        <div class="tag-title">Modelling</div>
-                        <span class="tag">Vivado/Vitis</span>
-                        <span class="tag">IceStudio</span>
-                        <span class="tag">Altium</span>
-                        <span class="tag">Simulink</span>
-                        <span class="tag">Inventor</span>
-                        <span class="tag">Solidworks</span>
-                        <span class="tag">Ansys</span>
-                    </div>
-
-                    <div class="tag-section">
-                        <div class="tag-title">Tools</div>
-                        <span class="tag">3D Printing</span>
-                        <span class="tag">Laser cutting</span>
-                        <span class="tag">Woodshop Tools</span>
-                        <span class="tag">Soldering (THT & SMT)</span>
+                    <div class="command-output">
+                        <pre>───────┬──────────────────────────────────────────────────────────── 
+       │ Category: Programming
+───────┴────────────────────────────────────────────────────────────
+[
+  { "name": "Python" },
+  { "name": "C/C++" },
+  { "name": "Verilog" },
+  { "name": "GTKWave" },
+  { "name": "Verilator" },
+  { "name": "MatLab" },
+  { "name": "ROS" },
+  { "name": "OpenCV" },
+  { "name": "Linux" },
+  { "name": "bazel" },
+  { "name": "git" },
+  { "name": "linuxptp" },
+  { "name": "numpy" },
+  { "name": "scipy" },
+  { "name": "pytorch" },
+  { "name": "polars" },
+  { "name": "matplotlib" }
+]
+───────┬──────────────────────────────────────────────────────────── 
+       │ Category: Knowhow
+───────┴────────────────────────────────────────────────────────────
+[
+  { "name": "Networking & OSI model" },
+  { "name": "MapReduce paradigm" },
+  { "name": "RTL design and simulation" },
+  { "name": "bringup of μCs and SBCs" },
+  { "name": "Analytical/Numerical methods for Inverse Kinematics" },
+  { "name": "D-H parameters" },
+  { "name": "Controller Design for multi-dof robot arms" },
+  { "name": "classical/modern control theory" },
+  { "name": "Image Processing and Calibration" },
+  { "name": "Convolutional Neural Networks" }
+]
+───────┬──────────────────────────────────────────────────────────── 
+       │ Category: Modelling
+───────┴────────────────────────────────────────────────────────────
+[
+  { "name": "Vivado/Vitis" },
+  { "name": "IceStudio" },
+  { "name": "Altium" },
+  { "name": "Simulink" },
+  { "name": "Inventor" },
+  { "name": "Solidworks" },
+  { "name": "Ansys" }
+]
+───────┬──────────────────────────────────────────────────────────── 
+       │ Category: Tools
+───────┴────────────────────────────────────────────────────────────
+[
+  { "name": "3D Printing" },
+  { "name": "Laser cutting" },
+  { "name": "Woodshop Tools" },
+  { "name": "Soldering (THT & SMT)" }
+]</pre>
                     </div>
                 </div>
             </div>
 
             <div class="command-block">
-                <div class="command">tree ~/projects --charset=ascii -L 2 -d</div>
-                <div class="output command-output">
-                    <div class="section-heading">FPGA Based Ethernet MAC/PHY</div>
-                    <ul>
-                        <li>
-                            Designed and Tested Verilog modules for a Simple 10BaseT MAC and PHY following IEEE 802.3 to transmit fixed Layer 2 Ethernet packets. Debugged and Tested my design using Verilator and gtkwave. Working on expanding this to Layer 3+
-                        </li>
-                    </ul>
+                <div class="command">tree ~/projects --charset=ascii -L 2</div>
+                <div class="output">
+                    <div class="tree-output">
+/projects
+├── FPGA Based Ethernet MAC/PHY
+<span class="tree-description">Designed and Tested Verilog modules for a Simple 10BaseT MAC and PHY following IEEE 802.3 to transmit fixed Layer 2 Ethernet packets. Debugged and Tested my design using Verilator and gtkwave. Working on expanding this to Layer 3+</span>
+├── Chess Robot
+<span class="tree-description">Using an old 3d printer frame, built a chess robot. Designed the motor control circuits, wrote the Firmware for low level control of them, and the code for move detection using fiducial markers (AprilTags) and generation. Demo videos on Youtube.</span>
+└── Gyro-Boat
+<span class="tree-description">Built a model boat stabilized by a gyroscope, inspired off of Sperry's Gyro-Stabilizer. Demo videos on Youtube.</span>
 
-                    <div class="section-heading">Chess Robot</div>
-                    <ul>
-                        <li>
-                            Using an old 3d printer frame, built a chess robot. Designed the motor control circuits, wrote the Firmware for low level control of them, and the code for move detection using fiducial markers (AprilTags) and generation. Demo videos on Youtube.
-                        </li>
-                    </ul>
-
-                    <div class="section-heading">Gyro-Boat</div>
-                    <ul>
-                        <li>
-                            Built a model boat stabilized by a gyroscope, inspired off of Sperry's Gyro-Stabilizer. Demo videos on Youtube.
-                        </li>
-                    </ul>
+3 directories</pre>
+                    </div>
                 </div>
             </div>
 
@@ -594,22 +614,25 @@
                         <pre>
 ───────┬──────────────────────────────────────────────────────────────────────────────────────────────────────
        │ File: US-11287348-B2.pdf
-───────┴──────────────────────────────────────────────────────────────────────────────────────────────────────
+───────┴─────────────────────────────────────────────────────────────────────────────────────────────────────-
 ==> ~/patents/US-11287348-B2.pdf <==
 <span class="patent-id">US-11287348-B2</span>: <span class="highlight">Apparatus for measuring imbalance forces of a tire/hub assembly of a vehicle during motion of the vehicle</span>
 (Issued Mar 29, 2022)
+
 ───────┬──────────────────────────────────────────────────────────────────────────────────────────────────────
        │ File: US-10701266-B2.pdf
 ───────┴──────────────────────────────────────────────────────────────────────────────────────────────────────
 ==> ~/patents/US-10701266-B2.pdf <==
 <span class="patent-id">US-10701266-B2</span>: <span class="highlight">Method for reading out contents of a video file having a predefined video file format</span>
 (Issued Jun 30, 2020)
+
 ───────┬──────────────────────────────────────────────────────────────────────────────────────────────────────
        │ File: US-10469750-B1.pdf
 ───────┴──────────────────────────────────────────────────────────────────────────────────────────────────────
 ==> ~/patents/US-10469750-B1.pdf <==
 <span class="patent-id">US-10469750-B1</span>: <span class="highlight">Method for embedding motion data of an object into a video file to allow for synchronized visualization of the motion data</span>
 (Issued Nov 5, 2019)
+
 ───────┬──────────────────────────────────────────────────────────────────────────────────────────────────────
        │ File: US-10284752-B1.pdf
 ───────┴──────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -622,54 +645,59 @@
 
             <div class="command-block">
                 <div class="command">bat --style=grid ~/.resume/awards.md</div>
-                <div class="output command-output">
-                    <div class="section-heading">Awards & Recognition</div>
-                    <ul>
-                        <li><span class="award-name">Hack for Social Impact - 1st Place</span> (2024)</li>
-                        <li>
-                            Developed "Arboren" a tool to help UNCCD (UN Committee to Combat Desertification) analysts and policymakers more easily find and visualize map based data. Presented our hack during UNCCD's COP 16 in Riyadh, Saudi Arabia.
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>SII2024 Conference Paper on FPGA based Key Generation (2023)</li>
-                        <li>
-                            Wrote a paper on my work in developing a sensor data encryption system using an FPGA, and it was accepted to the upcoming Symposium on System Integration in Ha Long Bay, Vietnam.
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>President's Undergraduate Research Award (PURA) (2022)</li>
-                        <li>
-                            Funded to do research on Accelerating Homomorphic Encryption using FPGAs. Mentored an undergraduate student on FPGA design and HDL programming, and presented at Georgia Tech's undergraduate research symposium.
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>NASA SpaceApps – Best Use of Technology (2021)</li>
-                        <li>
-                            Developed a hardware hack for smoother separations of components in space. Utilized electromagnetic and hydraulic principles to create a compact and smoothly controllable Force Multiplier that can hold a preload of up to 16kN. Info on Github.
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>MIT COVID-19 Challenge – Winning Team (2020)</li>
-                        <li>
-                            Our winning hack, "COValert", envisioned an AI-powered SMS chatbot to augment at-home triage capabilities in rural communities lacking broadband internet access.
-                        </li>
-                    </ul>
+                <div class="output">
+                    <div class="command-output">
+                        <pre>───────┬──────────────────────────────────────────────────────────────────────────────────────────────────────
+       │ ~/.resume/awards.md
+───────┴──────────────────────────────────────────────────────────────────────────────────────────────────────
+
+# Awards & Recognition
+
+## Hack for Social Impact - 1st Place (2024)
+Developed "Arboren" a tool to help UNCCD (UN Committee to Combat Desertification) analysts and policymakers more easily find and visualize map based data. Presented our hack during UNCCD's COP 16 in Riyadh, Saudi Arabia.
+
+## SII2024 Conference Paper on FPGA based Key Generation (2023)
+Wrote a paper on my work in developing a sensor data encryption system using an FPGA, and it was accepted to the upcoming Symposium on System Integration in Ha Long Bay, Vietnam.
+
+## President's Undergraduate Research Award (PURA) (2022)
+Funded to do research on Accelerating Homomorphic Encryption using FPGAs. Mentored an undergraduate student on FPGA design and HDL programming, and presented at Georgia Tech's undergraduate research symposium.
+
+## NASA SpaceApps – Best Use of Technology (2021)
+Developed a hardware hack for smoother separations of components in space. Utilized electromagnetic and hydraulic principles to create a compact and smoothly controllable Force Multiplier that can hold a preload of up to 16kN. Info on Github.
+
+## MIT COVID-19 Challenge – Winning Team (2020)
+Our winning hack, "COValert", envisioned an AI-powered SMS chatbot to augment at-home triage capabilities in rural communities lacking broadband internet access.</pre>
+                    </div>
                 </div>
             </div>
 
             <div class="command-block">
                 <div class="command">bat --style=grid ~/.resume/education.yml</div>
-                <div class="output command-output">
-                    <div class="section-heading">Georgia Institute of Technology</div>
-                    <ul>
-                        <li>BS in Mechanical Engineering</li>
-                        <li>GPA: 4.0</li>
-                        <li class="section-heading">Relevant Coursework:</li>
-                        <li>Control of Dynamic Systems, Robotics, Mechatronics, Machine Design</li>
-                        <li>System Dynamics, Thermal and Fluids Laboratory, Experimental Methods</li>
-                        <li>Heat Transfer, Fluid Mechanics, Thermodynamics, Numerical Methods</li>
-                        <li>Deformable Bodies, Dynamics, Statics, Digital/Analog Circuits</li>
-                    </ul>
+                <div class="output">
+                    <div class="command-output">
+                        <pre>───────┬──────────────────────────────────────────────────────────── 
+       │ ~/.resume/education.yml
+───────┴────────────────────────────────────────────────────────────
+institution: Georgia Institute of Technology
+degree: BS in Mechanical Engineering
+gpa: 4.0
+coursework:
+  - Control of Dynamic Systems
+  - Robotics
+  - Mechatronics
+  - Machine Design
+  - System Dynamics
+  - Thermal and Fluids Laboratory
+  - Experimental Methods
+  - Heat Transfer
+  - Fluid Mechanics
+  - Thermodynamics
+  - Numerical Methods
+  - Deformable Bodies
+  - Dynamics
+  - Statics
+  - Digital/Analog Circuits</pre>
+                    </div>
                 </div>
             </div>
 
