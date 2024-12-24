@@ -1,24 +1,58 @@
 Programming:
-  Python: 10
-  "C/C++": 8
-  Verilog: 6
-  ROS: 6
+ Python: 10
+ "C/C++": 8
+ Verilog: 6
+ ROS: 6
+ "Linux/Unix": 8
+ OpenCV: 6
+ Bazel: 8
+ "NumPy/SciPy": 8
+ PyTorch: 6
+ Polars: 8
+ Matplotlib: 8
 
 Domain Knowledge:
-  "Networking & OSI":
-    - "TCP/IP Stack"
-    - "Ethernet L1-4"
-    - "PTP/NTP"
-    - "DDS"
-  "RTL Design":
-    - "Timing Analysis"
-    - "Synthesis"
+ "Networking & OSI":
+   - "TCP/IP Stack"
+   - "Ethernet L1-4"
+   - "PTP/NTP"
+   - "DDS"
+ "RTL Design":
+   - "Timing Analysis"
+   - "Synthesis"
+ "Robotics & Control":
+   - "IK/FK"
+   - "D-H Parameters"
+   - "PID Control"
+ "Computer Vision":
+   - "Calibration" 
+   - "CNNs"
+   - "SLAM"
+ "Data Processing":
+   - "MapReduce"
+   - "Distributed Systems"
 
 Tools & Software:
-  "Hardware Design":
-    "Vivado/Vitis": 9
-    "Altium": 9
-  Simulation:
-    "MATLAB/Simulink": 9
-    "GTKWave": 9
-    "Verilator": 7
+ "Hardware Design":
+   "Vivado/Vitis": 9
+   "Altium": 9
+ Simulation:
+   "MATLAB/Simulink": 9
+   "GTKWave": 9
+   "Verilator": 7
+   "Isaac Lab": 9
+ "CAD/CAM":
+   Inventor: 10
+   SolidWorks: 10
+   Onshape: 10
+
+Practical Skills:
+ Fabrication:
+   - "3D Printing (FDM/SLA)"
+   - "Laser Cutting"
+   - "Wood/Metal shop tools"
+   - "Welding"
+ Electronics:
+   - "THT/SMT Soldering"
+   - "PCB Assembly"
+   - "Test Equipment"

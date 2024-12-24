@@ -65,18 +65,74 @@ def create_skill_block(category: str, skills: Dict[str, Union[int, Dict, List]])
     
     return lines
 
-def generate_skills_display(yaml_file: str) -> str:
+def tile_blocks(blocks: List[List[str]], max_line_length: int = 80) -> List[str]:
+    if not blocks:
+        return []
+    
+    # Sort blocks by height (descending) to minimize gaps
+    blocks = sorted(blocks, key=len, reverse=True)
+    
+    # First determine which blocks go in which rows
+    rows = [[]]  # List of lists of blocks
+    row_widths = [0]  # Current width of each row
+    block_spacing = 1
+    
+    for block in blocks:
+        block_width = len(block[0])  # Width of current block
+        
+        # Try to find a row where this block fits
+        row_found = False
+        for i, (row, current_width) in enumerate(zip(rows, row_widths)):
+            if current_width + block_width + block_spacing <= max_line_length:
+                # Block fits in this row
+                rows[i].append(block)
+                row_widths[i] += block_width + block_spacing
+                row_found = True
+                break
+        
+        if not row_found:
+            # Start a new row
+            rows.append([block])
+            row_widths.append(block_width)
+    
+    # Now combine blocks in each row horizontally, then combine rows vertically
+    final_lines = []
+    
+    for row in rows:
+        # Find max height for this row
+        max_height = max(len(block) for block in row)
+        
+        # Combine blocks in this row
+        row_lines = []
+        for i in range(max_height):
+            line = ""
+            for block in row:
+                block_width = len(block[0])
+                if i < len(block):
+                    line += block[i] + " " * block_spacing
+                else:
+                    line += " " * (block_width + block_spacing)
+            row_lines.append(line.rstrip())
+        
+        # Add this row's lines to final result
+        final_lines.extend(row_lines)
+        final_lines.append("")  # Add blank line between rows
+    
+    return final_lines[:-1]  # Remove last blank line
+
+def generate_skills_display(yaml_file: str, max_line_length: int = 80) -> str:
     with open(yaml_file, 'r') as f:
         skills_data = yaml.safe_load(f)
     
-    # Create blocks and stack them vertically
-    all_lines = []
+    # Create individual blocks
+    blocks = []
     for category, skills in skills_data.items():
-        block = create_skill_block(category, skills)
-        all_lines.extend(block)
-        all_lines.append('')  # Add blank line between blocks
+        blocks.append(create_skill_block(category, skills))
     
-    return '\n'.join(all_lines)
+    # Tile blocks both horizontally and vertically
+    result = tile_blocks(blocks, max_line_length)
+    
+    return '\n'.join(result)
 
 if __name__ == "__main__":
     print(generate_skills_display("skills.yml"))
