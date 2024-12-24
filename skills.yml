@@ -1,0 +1,24 @@
+Programming:
+  Python: 10
+  "C/C++": 8
+  Verilog: 6
+  ROS: 6
+
+Domain Knowledge:
+  "Networking & OSI":
+    - "TCP/IP Stack"
+    - "Ethernet L1-4"
+    - "PTP/NTP"
+    - "DDS"
+  "RTL Design":
+    - "Timing Analysis"
+    - "Synthesis"
+
+Tools & Software:
+  "Hardware Design":
+    "Vivado/Vitis": 9
+    "Altium": 9
+  Simulation:
+    "MATLAB/Simulink": 9
+    "GTKWave": 9
+    "Verilator": 7

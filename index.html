@@ -266,12 +266,14 @@
                 font-weight: 500;
             }
 
-            .patent-id {
-                color: var(--green);
-                font-weight: 600;
+            .title {
+                color: var(--pink);
+                font-weight: 1000;
+                font-weight: bold;
+                display: inline;
             }
 
-            .award-name {
+            .subtitle {
                 color: var(--yellow);
                 font-weight: 600;
             }
@@ -529,7 +531,7 @@
 
             
             <div class="command-block">
-                <div class="command">grep -A 2 "EXPERIENCE" ~/.resume/career.md | less</div>
+                <div class="command">grep -A 2 <span class="title">"experience"</span> ~/career.md | less</div>
                 <div class="output">
                     <div class="section-heading">
                         Hardware/Software Engineer @ Zoox
@@ -616,33 +618,33 @@
             </div>
 
             <div class="command-block">
-                <div class="command">skills list --format=compact | bat -p --style=grid</div>
+                <div class="command"><span class="title">skills</span> list --format=compact | bat -p --style=grid</div>
                 <div class="output">
                     <div class="command-output">
                         <pre>
 ┌─ Programming ────────────┐ ┌─ Domain Knowledge ───────┐ ┌─ Tools & Software ─────────┐
 │ Python      [██████████] E │ Networking & OSI         │ │  Hardware Design           │
 │ C/C++       [████████──] A │ ├─ TCP/IP Stack          │ │  ├─ Vivado/Vitis     [Adv] │
-│ Verilog/HDL [████████──] A │ ├─ Ethernet L1-4         │ │  ├─ Altium           [Adv] │
-│ ROS         [██████────] I │ └─ PTP/NTP               │ │  └─ IceStudio        [Int] │
-│ Linux/Unix  [████████──] A │                          │ │                            │
-│ OpenCV      [██████────] I │ RTL Design               │ │  Simulation                │
-│ Git         [████████──] A │ ├─ Timing Analysis       │ │  ├─ MATLAB/Simulink  [Adv] │
-│ NumPy/SciPy [████████──] A │ └─ Synthesis             │ │  ├─ GTKWave          [Adv] │
-│ PyTorch     [██████────] I │                          │ │  └─ Verilator        [Int] │
+│ Verilog     [██████────] I │ ├─ Ethernet L1-4         │ │  └─ Altium           [Adv] │
+│ ROS         [██████────] I │ ├─ PTP/NTP               │ │                            │
+│ Linux/Unix  [████████──] A │ └─ DDS                   │ │  Simulation                |
+│ OpenCV      [██████────] I │ RTL Design               │ │  ├─ MATLAB/Simulink  [Adv] │
+│ Bazel       [████████──] A │ ├─ Timing Analysis       │ │  ├─ GTKWave          [Adv] │
+│ NumPy/SciPy [████████──] A │ └─ Synthesis             │ │  └─ Verilator        [Int] │
+│ PyTorch     [██████────] I │                          │ │  ├─ Isaac Lab        [Adv] |
 │ Polars      [████████──] A │ Robotics & Control       │ │                            │
 │ Matplotlib  [████████──] A │ ├─ IK/FK                 │ │ CAD/CAM                    │
-└──────────────────────────┘ │ ├─ D-H Parameters        │ │ ├─ Inventor          [Adv] │
-┌─ Practical Skills ───────┐ │ └─ PID Control           │ │ ├─ SolidWorks        [Adv] │
-│ Fabrication              │ │                          │ │ └─ ANSYS             [Int] │
+└──────────────────────────┘ │ ├─ D-H Parameters        │ │ ├─ Inventor          [Exp] │
+┌─ Practical Skills ───────┐ │ └─ PID Control           │ │ ├─ SolidWorks        [Exp] │
+│ Fabrication              │ │                          │ │ └─ Onshape           [Exp] │
 │ ├─ 3D Printing (FDM/SLA) │ │ Computer Vision          │ └────────────────────────────┘
-│ ├─ Laser Cutting         │ │ ├─ Calibration           │ Legend:
-│ ├─ Wood/Metal shop tools │ │ ├─ CNNs                  │ E: Expert    A: Advanced
-│ └─ Welding               │ │ └─ SLAM                  │ I: Intermediate
-│ Electronics              │ │                          │ [██████████] Expert
-│ ├─ THT/SMT Soldering     │ │ Data Processing          │ [████████──] Advanced
-│ ├─ PCB Assembly          │ │ ├─ MapReduce             │ [██████────] Intermediate
-│ └─ Test Equipment        │ │ └─ Distributed Systems   │ [████████──] Advanced
+│ ├─ Laser Cutting         │ │ ├─ Calibration           │ 
+│ ├─ Wood/Metal shop tools │ │ ├─ CNNs                  │ 
+│ └─ Welding               │ │ └─ SLAM                  │
+│ Electronics              │ │                          │ 
+│ ├─ THT/SMT Soldering     │ │ Data Processing          │
+│ ├─ PCB Assembly          │ │ ├─ MapReduce             │ 
+│ └─ Test Equipment        │ │ └─ Distributed Systems   │ 
 └──────────────────────────┘ └──────────────────────────┘
 </pre>
                     </div>
@@ -650,26 +652,26 @@
             </div>
 
             <div class="command-block">
-                <div class="command">tree ~/projects --charset=ascii -L 3</div>
+                <div class="command">tree <span class="title">~/projects</span> --charset=ascii -L 3</div>
                 <div class="output">
                     <div class="tree-output">
 /projects
-├── FPGA Based Ethernet MAC/PHY
+├── <span class="subtitle">FPGA Based Ethernet MAC/PHY</span>
 │   └── description.txt
-│       Designed and Tested Verilog modules for a Simple 10BaseT MAC and PHY 
-│       following IEEE 802.3 to transmit fixed Layer 2 Ethernet packets. Debugged 
-│       and Tested using Verilator and gtkwave. Working on expanding to Layer 3+
+│       Designed and Tested <span class="keyword">Verilog</span> modules for a Simple <span class="keyword">10BaseT</span> MAC and PHY 
+│       following <span class="keyword">IEEE 802.3</span> to transmit fixed Layer 2 Ethernet packets. Debugged 
+│       and Tested using <span class="keyword">Verilator</span> and <span class="keyword">gtkwave</span>. Working on expanding to Layer 3+
 │
-├── Chess Robot
+├── <span class="subtitle">Chess Robot</span>
 │   └── description.txt
-│       Using an old 3d printer frame, built a chess robot. Designed motor control 
-│       circuits, wrote Firmware for low level control, and code for move detection 
-│       using fiducial markers (AprilTags) and generation. Demo videos on Youtube.
+│       Using an old 3d printer frame, built a chess robot. Designed <span class="keyword">motor control</span> 
+│       circuits, wrote <span class="keyword">Firmware</span> for low level control, and code for move detection 
+│       using <span class="keyword">fiducial markers</span> (<span class="keyword">AprilTags</span>) and generation. Demo videos on Youtube.
 │
-└── Gyro-Boat
+└── <span class="subtitle">Gyro-Boat</span>
     └── description.txt
-        Built a model boat stabilized by a gyroscope, inspired by Sperry's 
-        Gyro-Stabilizer. Demo videos on Youtube.
+        Built a model boat stabilized by a <span class="keyword">gyroscope</span>, inspired by Sperry's 
+        <span class="keyword">Gyro-Stabilizer</span>. Demo videos on Youtube.
 
 3 directories, 6 files</pre>
                     </div>
@@ -677,7 +679,7 @@
             </div>
 
             <div class="command-block">
-                <div class="command">cat ~/.resume/awards.txt | column -t -s ';' | sed '1,2s/./-/g'</div>
+                <div class="command">cat <span class="title">~/awards</span> | column -t -s ';' | sed '1,2s/./-/g'</div>
                 <div class="output">
                     <div class="command-output">
                         <pre>
@@ -685,86 +687,82 @@
 ---------------------------------------------------------------------------------------------------------------
 Year  Award                                  Organization  Details
 ---------------------------------------------------------------------------------------------------------------
-2024  Hack for Social Impact (1st Place)     UNCCD         Developed "Arboren" to help UN analysts visualize 
-                                                           and analyze desertification data. Presented at 
-                                                           COP 16 in Riyadh.
+2024  <span class="subtitle">Hack for Social Impact (1st Place)</span>     UNCCD         Developed "<span class="keyword">Arboren</span>" to help UN analysts visualize 
+                                                           and analyze <span class="keyword">desertification data</span>. Presented at 
+                                                           <span class="keyword">COP 16</span> in Riyadh.
 
-2023  SII2024 Conference Paper               IEEE          FPGA-based sensor encryption system paper accepted 
-                                                           to Symposium on System Integration in Ha Long Bay,
+2023  <span class="subtitle">SII2024 Conference Paper</span>               IEEE          <span class="keyword">FPGA-based sensor encryption</span> system paper accepted 
+                                                           to <span class="keyword">Symposium on System Integration</span> in Ha Long Bay,
                                                            Vietnam.
 
-2022  President's Undergraduate              Georgia       Funded to do research on Homomorphic Encryption with 
-      Research Award (PURA)                  Tech          FPGAs. Mentored a student on FPGA development, and 
+2022  <span class="subtitle">President's Undergraduate</span>              Georgia       Funded to do research on <span class="keyword">Homomorphic Encryption</span> with 
+      <span class="subtitle">Research Award (PURA)</span>                  Tech          <span class="keyword">FPGAs</span>. Mentored a student on <span class="keyword">FPGA development</span>, and 
                                                            presented findings at a research symposium.
 
-2021  NASA SpaceApps                         NASA          Developed novel space component separation system.
-      Best Use of Technology                               used electromagnetic and hydraulic principles to 
-                                                           apply a 16kN preload.
+2021  <span class="subtitle">NASA SpaceApps</span>                         NASA          Developed novel <span class="keyword">space component separation system</span>,
+      <span class="subtitle">Best Use of Technology</span>                               used <span class="keyword">electromagnetic</span> and <span class="keyword">hydraulic</span> principles to 
+                                                           apply a <span class="keyword">16kN preload</span>.
 
-2020  MIT COVID-19 Challenge                 MIT           Created "COValert" SMS chatbot for rural COVID 
-      Winning Team                                         triage for areas without internet access.  
+2020  <span class="subtitle">MIT COVID-19 Challenge</span>                 MIT           Created "<span class="keyword">COValert</span>" <span class="keyword">SMS chatbot</span> for rural COVID 
+      <span class="subtitle">Winning Team</span>                                         triage for areas without internet access.  
 ---------------------------------------------------------------------------------------------------------------</pre>
                     </div>
                 </div>
             </div>
 
             <div class="command-block">
-                <div class="command">find ~/patents -type f -name "*.pdf" -exec sh -c 'echo "==> $1 <=="; pdftotext "$1" - | head -n 1' sh {} \; | bat --style=grid</div>
+                <div class="command">ssh guest@uspto ls -1 <span class="title">~/patents</span> | grep -l "Saahas Yechuri" | bat --style=grid</div>
                 <div class="output">
                     <div class="command-output">
                         <pre>
 ───────┬──────────────────────────────────────────────────────────────────────────────────────────────────────
        │ File: US-11287348-B2.pdf
 ───────┴─────────────────────────────────────────────────────────────────────────────────────────────────────-
-==> ~/patents/US-11287348-B2.pdf <==
-<span class="patent-id">US-11287348-B2</span>: <span class="highlight">Apparatus for measuring imbalance forces of a tire/hub assembly of a vehicle during motion of the vehicle</span>
+<span class="subtitle">Tire Balance Measurement</span>: Apparatus for measuring <span class="keyword">imbalance forces</span> of a <span class="keyword">tire/hub assembly</span> of a vehicle during motion of the vehicle
 (Issued Mar 29, 2022)
 ───────┬──────────────────────────────────────────────────────────────────────────────────────────────────────
        │ File: US-10701266-B2.pdf
 ───────┴──────────────────────────────────────────────────────────────────────────────────────────────────────
-==> ~/patents/US-10701266-B2.pdf <==
-<span class="patent-id">US-10701266-B2</span>: <span class="highlight">Method for reading out contents of a video file having a predefined video file format</span>
+<span class="subtitle">Video File Reader</span>: Method for reading out contents of a <span class="keyword">video file</span> having a <span class="keyword">predefined video file format</span>
 (Issued Jun 30, 2020)
 ───────┬──────────────────────────────────────────────────────────────────────────────────────────────────────
        │ File: US-10469750-B1.pdf
 ───────┴──────────────────────────────────────────────────────────────────────────────────────────────────────
-==> ~/patents/US-10469750-B1.pdf <==
-<span class="patent-id">US-10469750-B1</span>: <span class="highlight">Method for embedding motion data of an object into a video file to allow for synchronized visualization of the motion data</span>
+<span class="subtitle">Motion Data Embedding</span>: Method for embedding <span class="keyword">motion data</span> of an object into a <span class="keyword">video file</span> to allow for <span class="keyword">synchronized visualization</span> of the motion data
 (Issued Nov 5, 2019)
 ───────┬──────────────────────────────────────────────────────────────────────────────────────────────────────
        │ File: US-10284752-B1.pdf
 ───────┴──────────────────────────────────────────────────────────────────────────────────────────────────────
-==> ~/patents/US-10284752-B1.pdf <==
-<span class="patent-id">US-10284752-B1</span>: <span class="highlight">Method for determining a start offset between a video recording device and an inertial measurement unit</span>
+<span class="subtitle">Video-IMU Synchronization</span>: Method for determining a <span class="keyword">start offset</span> between a <span class="keyword">video recording device</span> and an <span class="keyword">inertial measurement unit</span>
 (Issued May 7, 2019)</pre>
                     </div>
                 </div>
             </div>
 
             <div class="command-block">
-                <div class="command">cat ~/.resume/education.yml</div>
+                <div class="command">cat <span class="title">education.yml</span></div>
                 <div class="output">
                     <div class="command-output">
                         <pre>
-institution: Georgia Institute of Technology
-degree: BS in Mechanical Engineering
-gpa: 4.0
+institution: <span class="subtitle">Georgia Institute of Technology</span>
+degree: <span class="subtitle">BS in Mechanical Engineering</span>
+gpa: <span class="keyword">4.0</span>
 coursework:
-  - Control of Dynamic Systems
-  - Robotics
-  - Mechatronics
-  - Machine Design
-  - System Dynamics
-  - Thermal and Fluids Laboratory
-  - Experimental Methods
-  - Heat Transfer
-  - Fluid Mechanics
-  - Thermodynamics
-  - Numerical Methods
-  - Deformable Bodies
-  - Dynamics
-  - Statics
-  - Digital/Analog Circuits</pre>
+  - <span class="keyword">Control of Dynamic Systems</span>
+  - <span class="keyword">Robotics</span>
+  - <span class="keyword">Mechatronics</span>
+  - <span class="keyword">Machine Design</span>
+  - <span class="keyword">System Dynamics</span>
+  - <span class="keyword">Thermal and Fluids Laboratory</span>
+  - <span class="keyword">Experimental Methods</span>
+  - <span class="keyword">Heat Transfer</span>
+  - <span class="keyword">Fluid Mechanics</span>
+  - <span class="keyword">Thermodynamics</span>
+  - <span class="keyword">Numerical Methods</span>
+  - <span class="keyword">Deformable Bodies</span>
+  - <span class="keyword">Dynamics</span>
+  - <span class="keyword">Statics</span>
+  - <span class="keyword">Digital/Analog Circuits</span></pre>
                     </div>
                 </div>
             </div>
