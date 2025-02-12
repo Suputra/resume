@@ -138,7 +138,7 @@
             }
 
             .command-block {
-                margin-top: 2rem;
+                margin-top: 1rem;
                 border: 1px solid var(--border);
                 border-radius: 8px;
                 padding: 1.5rem;
@@ -153,7 +153,7 @@
 
             .command {
                 color: var(--green);
-                margin-bottom: 1.5rem;
+                margin-bottom: 1rem;
                 font-weight: 600;
                 display: flex;
                 align-items: center;
@@ -334,24 +334,26 @@
 
             @media print {
                 body {
-                    background: white;
+                    -webkit-print-color-adjust: exact !important;
+                    print-color-adjust: exact !important;
+                    background-color: #1a1b26 !important;
                 }
 
                 .terminal {
                     box-shadow: none;
-                    border: 1px solid #ddd;
+                    /* border: 1px solid #ddd; */
                 }
 
                 :root {
-                    --bg: white;
-                    --bg-lighter: white;
-                    --text: #2c3e50;
-                    --pink: #e74c3c;
-                    --purple: #8e44ad;
-                    --cyan: #2980b9;
-                    --green: #27ae60;
-                    --yellow: #f39c12;
-                    --border: #bdc3c7;
+                    --bg: #1a1b26;
+                    --bg-lighter: #24283b;
+                    --text: #c0caf5;
+                    --pink: #f7768e;
+                    --purple: #bb9af7;
+                    --cyan: #7dcfff;
+                    --green: #9ece6a;
+                    --yellow: #e0af68;
+                    --border: #414868;
                 }
             }
 
@@ -662,8 +664,6 @@ WNWWWWWWWWWk;,'''.........',,;;;;,,,,,,,'............'''''',,,;::,''''.'''',,'''
                     </div>
                 </div>
             </div>
-
-            
             <div class="command-block">
                 <div class="command">grep -A 2 <span class="title">"experience"</span> ~/career.md | less</div>
                 <div class="output">
@@ -750,7 +750,6 @@ WNWWWWWWWWWk;,'''.........',,;;;;,,,,,,,'............'''''',,,;::,''''.'''',,'''
                     </ul>
                 </div>
             </div>
-
             <div class="command-block">
                 <div class="command"><span class="title">skills</span> list --format=compact | bat -p --style=grid</div>
                 <div class="output">
@@ -779,77 +778,59 @@ WNWWWWWWWWWk;,'''.........',,;;;;,,,,,,,'............'''''',,,;::,''''.'''',,'''
 │                            │ │                        │ │ ├─ THT/SMT Soldering     │ 
 │                            │ │                        │ │ ├─ PCB Assembly          │ 
 │                            │ │                        │ │ └─ Test Equipment        │ 
-└────────────────────────────┘ └────────────────────────┘ └──────────────────────────┘
-</pre>
-                    </div>
-                </div>
-            </div>
-
-            <div class="command-block">
+└────────────────────────────┘ └────────────────────────┘ └──────────────────────────┘</pre>
+</div>
+</div>
+</div>
+<div class="command-block">
                 <div class="command">tree <span class="title">~/projects</span> --charset=ascii -L 3</div>
                 <div class="output">
-                    <div class="tree-output">
-/projects
+                    <div class="tree-output">/projects
 ├── <span class="subtitle">FPGA Based Ethernet MAC/PHY</span>
 │   └── description.txt
 │       Designed and Tested <span class="keyword">Verilog</span> modules for a Simple <span class="keyword">10BaseT</span> MAC and PHY 
 │       following <span class="keyword">IEEE 802.3</span> to transmit fixed Layer 2 Ethernet packets. Debugged 
 │       and Tested using <span class="keyword">Verilator</span> and <span class="keyword">gtkwave</span>. Working on expanding to Layer 3+
-│
 ├── <span class="subtitle">Chess Robot</span>
 │   └── description.txt
 │       Using an old 3d printer frame, built a chess robot. Designed <span class="keyword">motor control</span> 
 │       circuits, wrote <span class="keyword">Firmware</span> for low level control, and code for move detection 
 │       using <span class="keyword">fiducial markers</span> (<span class="keyword">AprilTags</span>) and generation. Demo videos on Youtube.
-│
 └── <span class="subtitle">Gyro-Boat</span>
     └── description.txt
         Built a model boat stabilized by a <span class="keyword">gyroscope</span>, inspired by Sperry's 
         <span class="keyword">Gyro-Stabilizer</span>. Demo videos on Youtube.
-
-3 directories, 6 files</pre>
-                    </div>
+3 directories, 6 files</pre></div>
                 </div>
             </div>
-
             <div class="command-block">
                 <div class="command">cat <span class="title">~/awards</span> | column -t -s ';' | sed '1,2s/./-/g'</div>
                 <div class="output">
-                    <div class="command-output">
-                        <pre>
-                                            Awards & Recognition
+                    <div class="command-output"><pre>                                            Awards & Recognition
 ---------------------------------------------------------------------------------------------------------------
 Year  Award                                  Organization  Details
 ---------------------------------------------------------------------------------------------------------------
 2024  <span class="subtitle">Hack for Social Impact (1st Place)</span>     UNCCD         Developed "<span class="keyword">Arboren</span>" to help UN analysts visualize 
                                                            and analyze <span class="keyword">desertification data</span>. Presented at 
                                                            <span class="keyword">COP 16</span> in Riyadh.
-
 2023  <span class="subtitle">SII2024 Conference Paper</span>               IEEE          <span class="keyword">FPGA-based sensor encryption</span> system paper accepted 
                                                            to <span class="keyword">Symposium on System Integration</span> in Ha Long Bay,
                                                            Vietnam.
-
 2022  <span class="subtitle">President's Undergraduate</span>              Georgia       Funded to do research on <span class="keyword">Homomorphic Encryption</span> with 
       <span class="subtitle">Research Award (PURA)</span>                  Tech          <span class="keyword">FPGAs</span>. Mentored a student on <span class="keyword">FPGA development</span>, and 
                                                            presented findings at a research symposium.
-
 2021  <span class="subtitle">NASA SpaceApps</span>                         NASA          Developed novel <span class="keyword">space component separation system</span>,
       <span class="subtitle">Best Use of Technology</span>                               used <span class="keyword">electromagnetic</span> and <span class="keyword">hydraulic</span> principles to 
                                                            apply a <span class="keyword">16kN preload</span>.
-
 2020  <span class="subtitle">MIT COVID-19 Challenge</span>                 MIT           Created "<span class="keyword">COValert</span>" <span class="keyword">SMS chatbot</span> for rural COVID 
       <span class="subtitle">Winning Team</span>                                         triage for areas without internet access.  
----------------------------------------------------------------------------------------------------------------</pre>
-                    </div>
+---------------------------------------------------------------------------------------------------------------</pre></div>
                 </div>
             </div>
-
             <div class="command-block">
                 <div class="command">ssh guest@uspto ls -1 <span class="title">~/patents</span> | grep -l "Saahas Yechuri" | bat --style=grid</div>
                 <div class="output">
-                    <div class="command-output">
-<pre>
-───────┬──────────────────────────────────────────────────────────────────────────────────────────────────────
+                    <div class="command-output"><pre>───────┬──────────────────────────────────────────────────────────────────────────────────────────────────────
        │ File: US-11287348-B2.pdf
 ───────┴─────────────────────────────────────────────────────────────────────────────────────────────────────-
 <span class="subtitle">Tire Balance Measurement</span>: Apparatus for measuring <span class="keyword">imbalance forces</span> of a <span class="keyword">tire/hub assembly</span> of a vehicle during motion of the vehicle
@@ -868,17 +849,13 @@ Year  Award                                  Organization  Details
        │ File: US-10284752-B1.pdf
 ───────┴──────────────────────────────────────────────────────────────────────────────────────────────────────
 <span class="subtitle">Video-IMU Synchronization</span>: Method for determining a <span class="keyword">start offset</span> between a <span class="keyword">video recording device</span> and an <span class="keyword">inertial measurement unit</span>
-(Issued May 7, 2019)</pre>
-                    </div>
+(Issued May 7, 2019)</pre></div>
                 </div>
             </div>
-
             <div class="command-block">
                 <div class="command">cat <span class="title">education.yml</span></div>
                 <div class="output">
-                    <div class="command-output">
-                        <pre>
-institution: <span class="subtitle">Georgia Institute of Technology</span>
+                    <div class="command-output"><pre>institution: <span class="subtitle">Georgia Institute of Technology</span>
 degree: <span class="subtitle">BS in Mechanical Engineering</span>
 gpa: <span class="keyword">4.0</span>
 coursework:
@@ -896,11 +873,9 @@ coursework:
   - <span class="keyword">Deformable Bodies</span>
   - <span class="keyword">Dynamics</span>
   - <span class="keyword">Statics</span>
-  - <span class="keyword">Digital/Analog Circuits</span></pre>
-                    </div>
+  - <span class="keyword">Digital/Analog Circuits</span></pre></div>
                 </div>
             </div>
-
 
             <div class="prompt">
                 user@saahas-pc<span>:~$</span> <span class="cursor"></span>
