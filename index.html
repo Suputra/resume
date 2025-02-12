@@ -92,19 +92,21 @@
 
             .content {
                 display: grid;
-                grid-template-columns: minmax(300px, 1.2fr) 2fr;
-                gap: 2rem;
+                grid-template-columns: minmax(300px, 1fr) minmax(400px, 2fr);
+                gap: 1rem;
                 margin-bottom: 2rem;
             }
 
             .ascii-art {
-                font-size: 5.5px;
+                /* font-family: "Courier New", monospace; */
+                font-size: 4.5px;
                 line-height: 0.8;
                 letter-spacing: 0;
                 white-space: pre;
                 color: var(--text);
                 opacity: 0.7;
                 transition: opacity 0.2s;
+                padding-left: 2rem;
             }
 
             .ascii-art:hover {
@@ -112,6 +114,8 @@
             }
 
             .info {
+                padding-left: 0;
+                max-width: 800px;
                 display: grid;
                 gap: 1rem;
             }
@@ -388,6 +392,131 @@
                 white-space: pre-wrap;
                 margin-bottom: 1rem;
             }
+
+            .command-output {
+                color: var(--text);
+                padding: 0.5rem 0;
+                white-space: pre-wrap;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                font-family: "Courier New", monospace;
+                line-height: 1;
+                margin: 0;
+                padding: 0;
+                letter-spacing: 0;
+            }
+
+            .command-output pre {
+                white-space: pre-wrap;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+
+            .command-output .entry {
+                margin-bottom: 1rem;
+            }
+
+            .command-output .entry:last-child {
+                margin-bottom: 0;
+            }
+
+            .command-output .entry-header {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 0.25rem;
+            }
+
+            .command-output .entry-title {
+                font-weight: bold;
+                color: var(--accent);
+            }
+
+            .command-output .entry-subtitle {
+                color: var(--text-dim);
+            }
+
+            .command-output .entry-content {
+                white-space: pre-wrap;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                padding-left: 1rem;
+            }
+
+            .command-output .entry-content ul {
+                margin: 0;
+                padding-left: 1rem;
+                list-style-type: none;
+            }
+
+            .command-output .entry-content li {
+                white-space: pre-wrap;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                margin-bottom: 0.25rem;
+                position: relative;
+            }
+
+            .command-output .entry-content li::before {
+                content: "•";
+                position: absolute;
+                left: -1rem;
+            }
+
+            /* Apply consistent formatting to all sections */
+            .publications-output,
+            .patents-output,
+            .projects-output,
+            .education-output {
+                white-space: pre-wrap;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+
+            .publications-output .entry,
+            .patents-output .entry,
+            .projects-output .entry,
+            .education-output .entry {
+                margin-bottom: 1rem;
+            }
+
+            .publications-output .entry-content,
+            .patents-output .entry-content,
+            .projects-output .entry-content,
+            .education-output .entry-content {
+                white-space: pre-wrap;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                padding-left: 1rem;
+            }
+
+            .publications-output .entry-content ul,
+            .patents-output .entry-content ul,
+            .projects-output .entry-content ul,
+            .education-output .entry-content ul {
+                margin: 0;
+                padding-left: 1rem;
+                list-style-type: none;
+            }
+
+            .publications-output .entry-content li,
+            .patents-output .entry-content li,
+            .projects-output .entry-content li,
+            .education-output .entry-content li {
+                white-space: pre-wrap;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                margin-bottom: 0.25rem;
+                position: relative;
+            }
+
+            .publications-output .entry-content li::before,
+            .patents-output .entry-content li::before,
+            .projects-output .entry-content li::before,
+            .education-output .entry-content li::before {
+                content: "•";
+                position: absolute;
+                left: -1rem;
+            }
         </style>
     </head>
     <body>
@@ -417,7 +546,7 @@
                     .;cc:cccllclllllllollc:::::;;;,'',',,,'''.                                                              
                    ,lccclllllllllloooolc::::::::;;;,,,',,'.'''........                                                      
                  .:lccllllllllllooodoooc:::::::::;;;;,,,'.''',;::;,,,,,'.                                                   
-                .locclllllooooodxxxddddoc:::::::::;;;;,''''',:::;,,''''''.                                                  
+                .locclllllooooodxxxddddoc:::::::::;;;;,'''',:::;,,''''''.                                                  
                 .dxllloodxkO000OOOOxddddol::::::::::;,,,'''cxkko;''',,''''.                                                 
                  'x0OO00KXNWWWWX0OOOkddddol:::::::;;;;;:;,,lkkko,''',;,'''.                                                 
                   ,ONNXXNWWWWWWWN0OOOkdoodol:::::::::;;;:,'cxk0x:'''''''',.                                                 
@@ -461,8 +590,8 @@
                  oNWNKKKK0000XXXklc:,;'   .;ll:,.  .d0d::l;,,,:lolc:;;,,,'',,;,,'',,,,,,,,,,,',,',,,'''.:l,,,,,,'''',.      
                  lNWXOkxxxxdkKXXklccc:,  .:l:'.     .xNOxdodk0KOxxol:,,;clcc::;,,,,,,,;;;;,,,,,,,,,'.'.'lc,,,,:,.',','      
                  'coddddxxddddooc;,;;     ..         .kWXXXXXXKoldcol,'':oxxxddollc:;,,,''''',,;,,''''.'lc,,'''..''',.      
-                       ,:;,''.                        'ONXXXXXKklol:cl;';ldddddddddolc;;,..'''..........:c,,''''''','.      
-                       cxoc:;'                         ,KNXXXXK0kolcclcclodddddddddolc;;;,''......  .....,;,,,,,','.        
+                       ,:;,''.                        'ONXXXXXKklol:cl;';ldddddddddolc;;;,''......  .....,;,,,,,','.        
+                       cxoc:;'                         ,KNXXXXK0kolcclcclodddddddddolc;;;,''......  .................        
                .'cdkOklokocc:,,,'',;::;,.               ,k0KXXKKK00Okkxxddddddoooolc:;,''... .....        ........          
         ..;clc;lOXXXXKxddoccclllddxdll:;;,'...            ..'''''''''..''''...........    ........                          
         ;ONWNkx0KKKKKKKKK000000KKK0d:;,:kXK0kl.                        .'.........................                          
@@ -478,7 +607,7 @@
   cX0o.       ,xkkkkkkkkkxxxxxxxxxxl;,,,.        'OOo;   .xNXKKx:,'.,ldooooooollllcllclllc,'....'xxoodd:',,.';,..',,.       
   ,ol;.       .xOkOOOOkkkkkkkkkkkxxl::;.         .co:,. .dXXXXk:,,''..,:ccccccccccc:::::::,'... ,kxdddl:',,'.''..','.       
 .:dxdc.        ':ccc::::ccccccccccc;'..          .;:,,'.lXXXX0c,;,'','.......'',,,,;;;;,;;;,,'..dOxdxd:'',,,'.''',,.        
-lX0xkOd,         ;:.'.         ...''.           :kxodxl;cOXNKl,;;;,,'.               ..........dOxddd:,'',,,,,,,,'.         
+lX0xkOd,         ;:.'.         ...''.           :kxodxl;cOXNKl,;;;,,'.               ..........dOxddd:,'',,,,,,'.         
 'OKc..ckc.       'kd:;.          :o:;.          'Ox..'lo,'lOOo;;;;;;,.                        .oOxdddc','',,,,,,'.           
 .cx:. 'c.        l0dl,           l0dl,          .c;  .:c',ll:,,;,,;,.                        .lOxdddl:',,,'''...             
  .             .kOoc.           :Oxl;.              .;clkkoc;,,',,.                         ckdoddl;,,,,,,'.                
@@ -486,8 +615,8 @@ lX0xkOd,         ;:.'.         ...''.           :kxodxl;cOXNKl,;;;,,'.          
             'xKK0Oo;..         ,dkxdl;..          .xXXX0xo:,,;,..                          ,oddoc,''',','.                  
 .            .o0KXX0o;'.       .:dKXX0x;'.       ...ckO0koo;',;,.                           .okkkdc,''''''.                   
 ;.           'xKXXXOl:;'       'cxKKK0xc,'.    .,oo:;clc;,,',;,..                          .okkkdc,','..'....        .........
-::dxkkOOOOkOdoOKXXKkc:;:dOOOOOkocd0000kl,';dOOkodo;',;;;;cc:;;,;cllllllccc:::clllllllcccc::dkkxdc:',,,'..',;;;;,,,;;;;;;;;'''''
-l:coodkXWWWWOd0KKKKxc:;:0WWWWWXdcdO0OOko;,,oXWKdlokkkkxdooc:;;.';::;coodooooddxolllc:cc:;;okxxxc:',,,''.';;;;;,,,,,;:;;;:;''..'
+::dxkkOOOOkOdoOKXXKkc:;:dOOOOOkocd0000kl,';dOOkodo;',;;;;cc:;;,;cllllllccc:::clllllllcccc::dkkxdc:',,,'..',;;;;,,,;;;;;;;;''''
+l:coodkXWWWWOd0KKKKxc:;:0WWWWWXdcdO0OOko;,,oXWKdlokkkkxdooc:;;.';::;coodooooddxolllc:cc:;;okxxxc:',,,''.';;;;;,,,,,;:;;;:;''..
 l::dxk0NWWWNkx0KKKKd::;:OWWWWWXxcdOOOOkdc,,:ONKd;,:cloooc;;;:;,;:;'';:cc::::;;;,,,,,,,,,,,;::c:,'''..'..''''..','''''''''.',;,
 ddx0K00OkKNKxkKKKK0d::;c0WWWWWXxcdOOOOkxl;;,oXNKdlc:,''''.',;;;,'........'.''''','''.';lc'',;;'''..,;;,,,,,,,...........,:cc::
 NKkddxOOO00xdOKKKKOl;:;:xWWWWNKdcokOOkkxo:,.;ONWWNNKkollllc:,'',,;::::::ccccccc::cllc:lo:,,,,,'';;:;,;:cc:;;,'.........,cc,;;,
@@ -719,7 +848,7 @@ Year  Award                                  Organization  Details
                 <div class="command">ssh guest@uspto ls -1 <span class="title">~/patents</span> | grep -l "Saahas Yechuri" | bat --style=grid</div>
                 <div class="output">
                     <div class="command-output">
-                        <pre>
+<pre>
 ───────┬──────────────────────────────────────────────────────────────────────────────────────────────────────
        │ File: US-11287348-B2.pdf
 ───────┴─────────────────────────────────────────────────────────────────────────────────────────────────────-
