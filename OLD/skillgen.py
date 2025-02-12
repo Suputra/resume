@@ -32,7 +32,7 @@ def create_box_content(content: str, width: int) -> str:
     content_margin = 1  # accounts for "│ " and "│"
     return f"│ {content.ljust(width - content_margin)}│"
 
-def create_skill_block(category: str, skills: Dict[str, Union[int, Dict, List]]) -> List[str]:
+def create_skill_block(category: str, skills: Dict[str, Union[int, Dict, List]], height: int = None) -> List[str]:
     # First generate all content lines without borders
     content_lines = []
     
@@ -64,6 +64,14 @@ def create_skill_block(category: str, skills: Dict[str, Union[int, Dict, List]])
     # Add content with proper padding
     for line in content_lines:
         lines.append(create_box_content(line, max_width))
+        
+    # If a specific height is requested, pad with empty lines
+    if height is not None:
+        content_height = len(content_lines)
+        padding_needed = height - content_height - 2  # -2 for top and bottom borders
+        if padding_needed > 0:
+            for _ in range(padding_needed):
+                lines.append(create_box_content("", max_width))
     
     # Add footer
     lines.append(create_box_bottom(max_width))
@@ -74,58 +82,66 @@ def tile_blocks(blocks: List[List[str]], max_line_length: int = 80) -> List[str]
     if not blocks:
         return []
     
-    # Sort blocks by height (descending) to minimize gaps
-    blocks = sorted(blocks, key=len, reverse=True)
+    # Find the height of the tallest block
+    max_height = max(len(block) for block in blocks)
     
-    # First determine which blocks go in which rows
-    rows = [[]]  # List of lists of blocks
-    row_widths = [0]  # Current width of each row
-    block_spacing = 1
-    
+    # Recreate blocks with uniform height
+    uniform_blocks = []
     for block in blocks:
-        block_width = len(block[0])  # Width of current block
+        # Extract category and skills from the original block
+        category = block[0][2:block[0].index('─')]  # Extract category from header
+        skills_data = {}
+        current_category = None
         
-        # Try to find a row where this block fits
-        row_found = False
-        for i, (row, current_width) in enumerate(zip(rows, row_widths)):
-            if current_width + block_width + block_spacing <= max_line_length:
-                # Block fits in this row
-                rows[i].append(block)
-                row_widths[i] += block_width + block_spacing
-                row_found = True
-                break
+        # Parse the block content to rebuild the skills data
+        for line in block[1:-1]:  # Skip header and footer
+            line = line[2:-1].rstrip()  # Remove box borders and trailing spaces
+            if not line:
+                continue
+            if line.startswith('├─ '):
+                current_category = line[3:]
+                skills_data[current_category] = []
+            elif line.startswith('│  ├─ '):
+                if current_category:
+                    skills_data[current_category].append(line[6:])
+            elif '[' in line:
+                name = line[:12].strip()
+                level = line.count('█')
+                skills_data[name] = level
         
-        if not row_found:
-            # Start a new row
-            rows.append([block])
-            row_widths.append(block_width)
+        # Recreate the block with uniform height
+        uniform_block = create_skill_block(category.strip(), skills_data, max_height)
+        uniform_blocks.append(uniform_block)
     
-    # Now combine blocks in each row horizontally, then combine rows vertically
+    # Combine blocks horizontally with spacing
+    block_spacing = 1
     final_lines = []
     
-    for row in rows:
-        # Find max height for this row
-        max_height = max(len(block) for block in row)
-        
-        # Combine blocks in this row
-        row_lines = []
-        for i in range(max_height):
-            line = ""
-            for block in row:
-                block_width = len(block[0])
-                if i < len(block):
-                    line += block[i] + " " * block_spacing
-                else:
-                    line += " " * (block_width + block_spacing)
-            row_lines.append(line.rstrip())
-        
-        # Add this row's lines to final result
-        final_lines.extend(row_lines)
-        final_lines.append("")  # Add blank line between rows
+    # Initialize first line
+    current_line = ""
     
-    return final_lines[:-1]  # Remove last blank line
+    # Add each block to the line
+    for block in uniform_blocks:
+        if current_line and len(current_line) + len(block[0]) + block_spacing > max_line_length:
+            break  # Stop if adding another block would exceed max length
+        
+        # Add spacing if this isn't the first block
+        if current_line:
+            current_line += " " * block_spacing
+        
+        # Add this block
+        for i, block_line in enumerate(block):
+            if i >= len(final_lines):
+                final_lines.append(current_line + block_line)
+            else:
+                final_lines[i] += " " * block_spacing + block_line
+        
+        # Update current line width for next iteration
+        current_line = final_lines[0][:len(final_lines[0])]
+    
+    return final_lines
 
-def generate_skills_display(yaml_file: str, max_line_length: int = 80) -> str:
+def generate_skills_display(yaml_file: str, max_line_length: int = 200) -> str:
     with open(yaml_file, 'r') as f:
         skills_data = yaml.safe_load(f)
     
