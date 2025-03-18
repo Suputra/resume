@@ -7,6 +7,11 @@
         <style>
             @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap");
 
+            @page {
+                size: 13.5in 47.5in;
+                margin: 0;
+            }
+
             :root {
                 --bg: #1a1b26;
                 --bg-lighter: #24283b;
@@ -585,7 +590,7 @@
                 <div class="titlebar-right">
                     <a href="https://github.com/Suputra/resume" class="github-button" title="View on GitHub">
                         <svg class="github-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.236 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
                         </svg>
                     </a>
                 </div>
@@ -603,7 +608,7 @@
                           ..            ...',;;;;,..                                                                        
                            ..       ..',;:::;;:;;:,'.                                                                       
                             ..   .',;:;;;;::;::::,'',.                                                                      
-                             .,''::;;;;;;;;;;:::,'',',','.                                                                    
+                             .,''::;;;;;;;;;;:::,'',',',                                                                        
                           .';;;,,',;;;;;::::::;,',,,,',,.                                                                   
                         .,cc:;;,''';:::ccclc:;;,,'',,'',,.                                                                  
                       .;cccccc:;;:ccllllolc::;;;;,'',''',,'..                                                               
@@ -735,25 +740,22 @@ WNWWWWWWWWWk;,'''.........',,;;;;,,,,,,,'............'''''',,,;::,''''.'''',,'''
                     <div class="period">Jan 2022 – Present | Foster City, CA</div>
                     <ul>
                         <li>
-                            Designed and built a <span class="keyword">vehicle network emulator</span> to simulate network traffic on real hardware. Developed <span class="keyword">hardware</span>, <span class="keyword">firmware</span>, and <span class="keyword">software</span> for data collection, emulation, and validation.
+                            Led development of <span class="keyword">vehicle network emulator</span> platform (<span class="keyword">NST</span>), integrating <span class="keyword">hardware</span>, <span class="keyword">firmware</span>, and <span class="keyword">software</span> to simulate and validate critical <span class="keyword">network traffic patterns</span>. Drove adoption across multiple teams for <span class="keyword">testing</span> and <span class="keyword">validation</span>.
                         </li>
                         <li>
-                            Analyzed <span class="keyword">100GB+</span> of vehicle network data using <span class="keyword">Python</span>; extracted characteristics into '<span class="keyword">streamdb</span>' files that are now used company-wide for data flow analysis and network security investigations.
+                            Engineered <span class="keyword">data analysis pipeline</span> processing <span class="keyword">100GB+</span> of vehicle network data; created company-wide '<span class="keyword">StreamDB</span>' standard now serving as <span class="keyword">source of truth</span> for vehicle network flows at Zoox. <span class="keyword">StreamDB</span> is used in the <span class="keyword">ethernet architecture</span>, <span class="keyword">product security</span>, and <span class="keyword">bandwidth testing</span>.
                         </li>
                         <li>
-                            Designed a <span class="keyword">4-layer passthrough board</span> to inject errors into <span class="keyword">100M/1G automotive Ethernet</span> lines; matched <span class="keyword">BaseT impedance</span> standards. Uncovered critical issues with missing data and fault detection.
+                            Designed and implemented comprehensive <span class="keyword">time synchronization</span> test framework; modified <span class="keyword">linuxptp</span> (<span class="keyword">ptp4l</span>/<span class="keyword">phc2sys</span>) for enhanced <span class="keyword">control</span> and <span class="keyword">filtering</span> of noisy <span class="keyword">correction data</span>. Created <span class="keyword">testbench</span> to characterize <span class="keyword">clock drift</span> across vehicle systems.
                         </li>
                         <li>
-                            Optimized network data analysis speed using the <span class="keyword">MapReduce paradigm</span> and designed <span class="keyword">data pipelines</span> for Zoox's compute cluster.
+                            Resolved critical <span class="keyword">vehicle bringup</span> blocker by debugging <span class="keyword">ethernet link failures</span> to <span class="keyword">telecommunications unit</span>; identified root cause in <span class="keyword">PHY polarity swap detection</span>, enabling reliable <span class="keyword">high-speed communication</span>.
                         </li>
                         <li>
-                            Utilized skills in <span class="keyword">hardware design</span>, <span class="keyword">firmware development</span>, <span class="keyword">software engineering</span> (Python, C/C++), and <span class="keyword">network protocols</span> to create the '<span class="keyword">Network Systems Tester</span>' (NST) emulator platform.
+                            Developed <span class="keyword">4-layer automotive ethernet</span> test board matching <span class="keyword">BaseT impedance</span> standards; enabled systematic <span class="keyword">fault injection</span> testing that uncovered critical <span class="keyword">network resilience</span> issues.
                         </li>
                         <li>
-                            Designed Test setups and Test Cases to verify the whole <span class="keyword">Time Synchronization</span> system on Vehicle - including the <span class="keyword">Grandleader</span>, <span class="keyword">Boundary Clocks</span>, and <span class="keyword">Endpoints</span>. This involved creative test setups, <span class="keyword">packet analysis</span>, and experimentation with plotting / data analysis.
-                        </li>
-                        <li>
-                            Maintain scripts that verify functionality of <span class="keyword">Telecommunications</span> and <span class="keyword">Time Synchronization</span> on the manufacturing line.
+                            Maintain and enhance <span class="keyword">manufacturing line</span> validation suite for <span class="keyword">telecommunications</span> and <span class="keyword">time synchronization</span> systems, ensuring <span class="keyword">production quality</span> and <span class="keyword">reliability</span>.
                         </li>
                     </ul>
 
