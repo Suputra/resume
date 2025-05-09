@@ -16,12 +16,13 @@
                 --bg: #1a1b26;
                 --bg-lighter: #24283b;
                 --text: #c0caf5;
-                --pink: #f7768e;b
+                --pink: #f7768e;
                 --purple: #bb9af7;
                 --cyan: #7dcfff;
                 --green: #9ece6a;
                 --yellow: #e0af68;
                 --border: #414868;
+                font-size: 75%; /* Reduce base font size */
             }
 
             * {
@@ -215,13 +216,10 @@
                 color: var(--green);
                 margin-bottom: 1rem;
                 font-weight: 600;
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
             }
 
             .command::before {
-                content: "$";
+                content: "$ ";
                 color: var(--purple);
             }
 
@@ -385,10 +383,18 @@
 
                 body {
                     padding: 1rem;
+                    font-size: 0.9rem;
                 }
 
                 .terminal {
                     padding: 1rem;
+                }
+
+                /* Prevent wrapping and enable horizontal scroll for preformatted content */
+                .tree-output {    /* Now applies to skills, projects, awards, patents, education */
+                    white-space: pre;    /* Prevent internal line wrapping */
+                    overflow-x: auto;    /* Allow horizontal scrolling for the block */
+                    font-size: 0.9em;    /* Adjust font size */
                 }
             }
 
@@ -417,22 +423,7 @@
                 }
             }
 
-            .command-output {
-                max-width: 100%;
-            }
-
-            .command-output pre, pre.command-output {
-                white-space: pre-wrap;
-                word-wrap: break-word;
-                overflow-wrap: break-word;
-                font-family: "Courier New", monospace;
-                white-space: pre;
-                line-height: 1;
-                margin: 0;
-                padding: 0;
-                letter-spacing: 0;
-            }
-
+            /* Styles for .tree-output, now used for all command block outputs */
             .tree-output {
                 font-family: "JetBrains Mono", monospace;
                 white-space: pre;
@@ -453,131 +444,6 @@
                 display: block;
                 white-space: pre-wrap;
                 margin-bottom: 1rem;
-            }
-
-            .command-output {
-                color: var(--text);
-                padding: 0.5rem 0;
-                white-space: pre-wrap;
-                word-wrap: break-word;
-                overflow-wrap: break-word;
-                font-family: "Courier New", monospace;
-                line-height: 1;
-                margin: 0;
-                padding: 0;
-                letter-spacing: 0;
-            }
-
-            .command-output pre {
-                white-space: pre-wrap;
-                word-wrap: break-word;
-                overflow-wrap: break-word;
-            }
-
-            .command-output .entry {
-                margin-bottom: 1rem;
-            }
-
-            .command-output .entry:last-child {
-                margin-bottom: 0;
-            }
-
-            .command-output .entry-header {
-                display: flex;
-                justify-content: space-between;
-                margin-bottom: 0.25rem;
-            }
-
-            .command-output .entry-title {
-                font-weight: bold;
-                color: var(--accent);
-            }
-
-            .command-output .entry-subtitle {
-                color: var(--text-dim);
-            }
-
-            .command-output .entry-content {
-                white-space: pre-wrap;
-                word-wrap: break-word;
-                overflow-wrap: break-word;
-                padding-left: 1rem;
-            }
-
-            .command-output .entry-content ul {
-                margin: 0;
-                padding-left: 1rem;
-                list-style-type: none;
-            }
-
-            .command-output .entry-content li {
-                white-space: pre-wrap;
-                word-wrap: break-word;
-                overflow-wrap: break-word;
-                margin-bottom: 0.25rem;
-                position: relative;
-            }
-
-            .command-output .entry-content li::before {
-                content: "•";
-                position: absolute;
-                left: -1rem;
-            }
-
-            /* Apply consistent formatting to all sections */
-            .publications-output,
-            .patents-output,
-            .projects-output,
-            .education-output {
-                white-space: pre-wrap;
-                word-wrap: break-word;
-                overflow-wrap: break-word;
-            }
-
-            .publications-output .entry,
-            .patents-output .entry,
-            .projects-output .entry,
-            .education-output .entry {
-                margin-bottom: 1rem;
-            }
-
-            .publications-output .entry-content,
-            .patents-output .entry-content,
-            .projects-output .entry-content,
-            .education-output .entry-content {
-                white-space: pre-wrap;
-                word-wrap: break-word;
-                overflow-wrap: break-word;
-                padding-left: 1rem;
-            }
-
-            .publications-output .entry-content ul,
-            .patents-output .entry-content ul,
-            .projects-output .entry-content ul,
-            .education-output .entry-content ul {
-                margin: 0;
-                padding-left: 1rem;
-                list-style-type: none;
-            }
-
-            .publications-output .entry-content li,
-            .patents-output .entry-content li,
-            .projects-output .entry-content li,
-            .education-output .entry-content li {
-                white-space: pre-wrap;
-                word-wrap: break-word;
-                overflow-wrap: break-word;
-                margin-bottom: 0.25rem;
-                position: relative;
-            }
-
-            .publications-output .entry-content li::before,
-            .patents-output .entry-content li::before,
-            .projects-output .entry-content li::before,
-            .education-output .entry-content li::before {
-                content: "•";
-                position: absolute;
-                left: -1rem;
             }
         </style>
     </head>
@@ -817,7 +683,7 @@ WNWWWWWWWWWk;,'''.........',,;;;;,,,,,,,'............'''''',,,;::,''''.'''',,'''
             <div class="command-block">
                 <div class="command"><span class="title">skills</span> list --format=compact | bat -p --style=grid</div>
                 <div class="output">
-                    <div class="command-output">
+                    <div class="tree-output">
 <pre>
 ┌─ Programming ──────────────┐ ┌─ Domain Knowledge ─────┐ ┌─ Tools & Software ───────┐ 
 │ Python      [██████████] E │ │ Networking & OSI       │ │ Hardware Design          │ 
@@ -870,7 +736,7 @@ WNWWWWWWWWWk;,'''.........',,;;;;,,,,,,,'............'''''',,,;::,''''.'''',,'''
             <div class="command-block">
                 <div class="command">cat <span class="title">~/awards</span> | column -t -s ';' | sed '1,2s/./-/g'</div>
                 <div class="output">
-                    <div class="command-output"><pre>                                            Awards & Recognition
+                    <div class="tree-output"><pre>                                            Awards & Recognition
 ---------------------------------------------------------------------------------------------------------------
 Year  Award                                  Organization  Details
 ---------------------------------------------------------------------------------------------------------------
@@ -894,10 +760,11 @@ Year  Award                                  Organization  Details
             <div class="command-block">
                 <div class="command">ssh guest@uspto ls -1 <span class="title">~/patents</span> | grep -l "Saahas Yechuri" | bat --style=grid</div>
                 <div class="output">
-                    <div class="command-output"><pre>───────┬──────────────────────────────────────────────────────────────────────────────────────────────────────
+                    <div class="tree-output"><pre>───────┬──────────────────────────────────────────────────────────────────────────────────────────────────────
        │ File: US-11287348-B2.pdf
-───────┴─────────────────────────────────────────────────────────────────────────────────────────────────────-
-<span class="subtitle">Tire Balance Measurement</span>: Apparatus for measuring <span class="keyword">imbalance forces</span> of a <span class="keyword">tire/hub assembly</span> of a vehicle during motion of the vehicle
+───────┴──────────────────────────────────────────────────────────────────────────────────────────────────────
+<span class="subtitle">Tire Balance Measurement</span>: Apparatus for measuring <span class="keyword">imbalance forces</span> of a <span class="keyword">tire/hub assembly</span> of a vehicle during 
+motion of the vehicle
 (Issued Mar 29, 2022)
 ───────┬──────────────────────────────────────────────────────────────────────────────────────────────────────
        │ File: US-10701266-B2.pdf
@@ -907,19 +774,21 @@ Year  Award                                  Organization  Details
 ───────┬──────────────────────────────────────────────────────────────────────────────────────────────────────
        │ File: US-10469750-B1.pdf
 ───────┴──────────────────────────────────────────────────────────────────────────────────────────────────────
-<span class="subtitle">Motion Data Embedding</span>: Method for embedding <span class="keyword">motion data</span> of an object into a <span class="keyword">video file</span> to allow for <span class="keyword">synchronized visualization</span> of the motion data
+<span class="subtitle">Motion Data Embedding</span>: Method for embedding <span class="keyword">motion data</span> of an object into a <span class="keyword">video file</span> to allow for 
+<span class="keyword">synchronized visualization</span> of the motion data
 (Issued Nov 5, 2019)
 ───────┬──────────────────────────────────────────────────────────────────────────────────────────────────────
        │ File: US-10284752-B1.pdf
 ───────┴──────────────────────────────────────────────────────────────────────────────────────────────────────
-<span class="subtitle">Video-IMU Synchronization</span>: Method for determining a <span class="keyword">start offset</span> between a <span class="keyword">video recording device</span> and an <span class="keyword">inertial measurement unit</span>
+<span class="subtitle">Video-IMU Synchronization</span>: Method for determining a <span class="keyword">start offset</span> between a <span class="keyword">video recording device</span> and an 
+<span class="keyword">inertial measurement unit</span>
 (Issued May 7, 2019)</pre></div>
                 </div>
             </div>
             <div class="command-block">
                 <div class="command">cat <span class="title">education.yml</span></div>
                 <div class="output">
-                    <div class="command-output"><pre>institution: <span class="subtitle">Georgia Institute of Technology</span>
+                    <div class="tree-output"><pre>institution: <span class="subtitle">Georgia Institute of Technology</span>
 degree: <span class="subtitle">BS in Mechanical Engineering</span>
 gpa: <span class="keyword">4.0</span>
 coursework:
